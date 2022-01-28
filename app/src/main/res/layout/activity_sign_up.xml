@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/signup_screen"
-    tools:context=".SignUp">
+    tools:context=".Controller.SignUp">
 
     <TextView
         android:id="@+id/textView7"
@@ -18,10 +18,10 @@
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password_et" />
+        app:layout_constraintTop_toBottomOf="@+id/signupPassword" />
 
     <EditText
-        android:id="@+id/email_et"
+        android:id="@+id/signupEmail"
         android:layout_width="313dp"
         android:layout_height="48dp"
         android:layout_marginTop="8dp"
@@ -37,7 +37,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
-        android:id="@+id/login_btn"
+        android:id="@+id/signupBtn"
         android:layout_width="169dp"
         android:layout_height="48dp"
         android:layout_marginTop="48dp"
@@ -48,10 +48,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password_et3" />
+        app:layout_constraintTop_toBottomOf="@+id/confirmPassword" />
 
     <EditText
-        android:id="@+id/password_et"
+        android:id="@+id/signupPassword"
         android:layout_width="313dp"
         android:layout_height="48dp"
         android:layout_marginTop="8dp"
@@ -67,7 +67,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <EditText
-        android:id="@+id/password_et3"
+        android:id="@+id/confirmPassword"
         android:layout_width="313dp"
         android:layout_height="48dp"
         android:layout_marginTop="8dp"
@@ -93,7 +93,7 @@
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email_et" />
+        app:layout_constraintTop_toBottomOf="@+id/signupEmail" />
 
     <TextView
         android:id="@+id/textView"
@@ -107,5 +107,44 @@
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/error_email"
+        android:layout_width="173dp"
+        android:layout_height="17dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginBottom="2dp"
+        android:fontFamily="@font/roboto_medium"
+        android:gravity="end|right"
+        android:textColor="#FB0000"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/signupEmail"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/error_pass"
+        android:layout_width="173dp"
+        android:layout_height="17dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginBottom="2dp"
+        android:fontFamily="@font/roboto_medium"
+        android:gravity="end|right"
+        android:textColor="#FB0000"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/signupPassword"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/error_cfpass"
+        android:layout_width="180dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="193dp"
+        android:layout_marginBottom="2dp"
+        android:fontFamily="@font/roboto_medium"
+        android:gravity="end|right"
+        android:textColor="#FB0000"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/confirmPassword"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

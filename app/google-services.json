@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "626943882899",
+    "project_id": "darius-84cc3",
+    "storage_bucket": "darius-84cc3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:626943882899:android:9f632173409aa54109bf66",
+        "android_client_info": {
+          "package_name": "com.wallet.darius"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "626943882899-do7b9qape9uu8mauv7utj0um8jlsafv8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjdLVj9-JTci4-L-0b_PIzcA2l5xR2zxY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "626943882899-do7b9qape9uu8mauv7utj0um8jlsafv8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

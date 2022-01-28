@@ -8,4 +8,7 @@
     <string name="or">OR</string>
     <string name="email">Email</string>
     <string name="confirm_password">Confirm Password</string>
+    <string name="back_to_login">back to login</string>
+    <string name="verify_your_email_address">Verify your email address</string>
+    <string name="please_verify_that_your_email_address_is">Please verify that your email address is</string>
 </resources>

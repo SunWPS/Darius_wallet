@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.wallet.darius.Controller.LoginScreen;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
