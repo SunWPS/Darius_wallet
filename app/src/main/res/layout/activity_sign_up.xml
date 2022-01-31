@@ -50,6 +50,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/confirmPassword" />
 
+
     <EditText
         android:id="@+id/signupPassword"
         android:layout_width="313dp"
@@ -65,6 +66,8 @@
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+
 
     <EditText
         android:id="@+id/confirmPassword"
