@@ -35,7 +35,4 @@ public class VerifyEmail extends AppCompatActivity {
         });
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
 }

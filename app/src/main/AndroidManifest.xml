@@ -14,20 +14,33 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Darius">
         <activity
+            android:name=".Controller.ForgotPass"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".Controller.ResetPassword"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
             android:name=".Controller.VerifyEmail"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Controller.Dashboard"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Controller.SignUp"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Controller.LoginScreen"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -33,8 +33,6 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
 
         auth = FirebaseAuth.getInstance();
 
-
-        
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         toolBar = findViewById(R.id.tool_bar);
@@ -45,7 +43,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
 
     public void menuSetUp() {
 
-        // set up header
+
         View header = navigationView.getHeaderView(0);
         menuEmail = header.findViewById(R.id.menu_email);
         menuEmail.setText(auth.getCurrentUser().getEmail());
@@ -86,6 +84,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
 
         switch (item.getItemId()) {
             case R.id.nav_change_pass:
+                startActivity(new Intent(Dashboard.this, ResetPassword.class));
                 break;
             case R.id.nav_logout:
                 auth.signOut();

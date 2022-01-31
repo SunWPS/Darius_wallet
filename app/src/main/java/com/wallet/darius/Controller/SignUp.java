@@ -67,7 +67,7 @@ public class SignUp extends AppCompatActivity {
                 return;
             }
 
-            // data is validated and sign up the user using firebase
+            // send data to firebase
             Toast.makeText(SignUp.this, "Data Validated", Toast.LENGTH_SHORT).show();
 
             fAuth.createUserWithEmailAndPassword(email, password).addOnSuccessListener(authResult -> {

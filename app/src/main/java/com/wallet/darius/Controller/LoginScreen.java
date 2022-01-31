@@ -1,28 +1,23 @@
 package com.wallet.darius.Controller;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.wallet.darius.MainActivity;
+
 import com.wallet.darius.R;
 
 public class LoginScreen extends AppCompatActivity {
 
     EditText loginEmail, loginPassword;
-    TextView errorEmail, errorPassword;
+    TextView errorEmail, errorPassword, singUp, forgotPass;
     Button loginBtn;
     FirebaseAuth firebaseAuth;
 
@@ -35,17 +30,15 @@ public class LoginScreen extends AppCompatActivity {
 
         loginEmail = findViewById(R.id.loginEmail);
         loginPassword = findViewById(R.id.loginPassword);
-
         errorEmail = findViewById(R.id.error_email);
         errorPassword = findViewById(R.id.error_pass);
-
+        singUp = findViewById(R.id.signup);
+        forgotPass = findViewById(R.id.fg_pass);
         loginBtn = findViewById(R.id.loginBtn);
 
         loginBtn.setOnClickListener(view -> {
-
             clearError();
 
-            // extract and validate
             if (loginEmail.getText().toString().isEmpty()) {
                 errorEmail.setText("Email is Missing");
                 return;
@@ -67,16 +60,20 @@ public class LoginScreen extends AppCompatActivity {
                     }).addOnFailureListener(e -> Toast.makeText(LoginScreen.this, e.getMessage(), Toast.LENGTH_SHORT).show());
         });
 
+        singUp.setOnClickListener(view -> {
+            startActivity(new Intent(LoginScreen.this, SignUp.class));
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        });
+
+        forgotPass.setOnClickListener(view -> {
+            startActivity(new Intent(LoginScreen.this, ForgotPass.class));
+        });
+
     }
 
     public void clearError() {
         errorEmail.setText("");
         errorPassword.setText("");
-    }
-
-    public void signUpOnClick(View view) {
-        startActivity(new Intent(LoginScreen.this, SignUp.class));
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
     @Override
