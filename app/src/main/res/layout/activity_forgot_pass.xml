@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/forgotpass_screen"
-    tools:context=".Controller.ForgotPass">
+    tools:context=".ui.Password.ForgotPasswordActivity">
 
     <TextView
         android:id="@+id/textView13"

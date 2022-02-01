@@ -14,27 +14,27 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Darius">
         <activity
-            android:name=".Controller.ForgotPass"
+            android:name=".ui.Password.ForgotPasswordActivity"
             android:exported="false"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".Controller.ResetPassword"
+            android:name=".ui.Password.ResetPasswordActivity"
             android:exported="false"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".Controller.VerifyEmail"
+            android:name=".ui.signup.VerifyEmailActivity"
             android:exported="false"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".Controller.Dashboard"
+            android:name=".ui.dashboard.DashboardActivity"
             android:exported="false"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".Controller.SignUp"
+            android:name=".ui.signup.SignUpActivity"
             android:exported="false"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".Controller.LoginScreen"
+            android:name=".ui.login.LoginActivity"
             android:exported="false"
             android:screenOrientation="portrait"/>
         <activity

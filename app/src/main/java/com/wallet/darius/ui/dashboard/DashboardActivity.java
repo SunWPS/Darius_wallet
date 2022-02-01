@@ -1,4 +1,4 @@
-package com.wallet.darius.Controller;
+package com.wallet.darius.ui.dashboard;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -17,8 +17,10 @@ import androidx.appcompat.widget.Toolbar;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.wallet.darius.R;
+import com.wallet.darius.ui.login.LoginActivity;
+import com.wallet.darius.ui.Password.ResetPasswordActivity;
 
-public class Dashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class DashboardActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
@@ -42,7 +44,6 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
     }
 
     public void menuSetUp() {
-
 
         View header = navigationView.getHeaderView(0);
         menuEmail = header.findViewById(R.id.menu_email);
@@ -68,6 +69,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         navigationView.setNavigationItemSelectedListener(this);
 
         navigationView.setCheckedItem(R.id.nav_change_pass);
+
     }
 
     @Override
@@ -84,11 +86,11 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
 
         switch (item.getItemId()) {
             case R.id.nav_change_pass:
-                startActivity(new Intent(Dashboard.this, ResetPassword.class));
+                startActivity(new Intent(DashboardActivity.this, ResetPasswordActivity.class));
                 break;
             case R.id.nav_logout:
                 auth.signOut();
-                startActivity(new Intent(Dashboard.this, LoginScreen.class));
+                startActivity(new Intent(DashboardActivity.this, LoginActivity.class));
                 finish();
                 break;
         }
