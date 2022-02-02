@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/forgotpass_screen"
-    tools:context=".ui.Password.ForgotPasswordActivity">
+    tools:context=".ui.password.ForgotPasswordActivity">
 
     <TextView
         android:id="@+id/textView13"
@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/roboto_medium"
-        android:text="Emter Your Email to get Password Reset link."
+        android:text="Enter Your Email to get Password Reset link."
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"

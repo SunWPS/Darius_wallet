@@ -1,4 +1,4 @@
-package com.wallet.darius.ui.Password;
+package com.wallet.darius.ui.password;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,8 +16,8 @@ import com.wallet.darius.ui.BasicView;
 
 public class ResetPasswordActivity extends AppCompatActivity implements BasicView {
 
-    EditText inputNewPass, inputCfNewPass;
-    TextView errorNewPass, errorCfNewPass;
+    EditText inputCurrentPass, inputNewPass, inputCfNewPass;
+    TextView errorCurrentPass, errorNewPass, errorCfNewPass;
     Button resetPassBtn;
 
     ResetPasswordPresenter resetPasswordPresenter;
@@ -27,8 +27,10 @@ public class ResetPasswordActivity extends AppCompatActivity implements BasicVie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reset_password);
 
+        inputCurrentPass = findViewById(R.id.currentPassword);
         inputNewPass = findViewById(R.id.newPassword);
         inputCfNewPass = findViewById(R.id.cfNewPassword);
+        errorCurrentPass = findViewById(R.id.error_currentPass);
         errorNewPass = findViewById(R.id.error_newPass);
         errorCfNewPass = findViewById(R.id.error_cfNewPass);
         resetPassBtn = findViewById(R.id.resetPassBtn);
@@ -42,9 +44,14 @@ public class ResetPasswordActivity extends AppCompatActivity implements BasicVie
     private void onResetPassBtnClick() {
         clearError();
 
+        String currentPass = inputCurrentPass.getText().toString();
         String newPass = inputNewPass.getText().toString();
         String cfNewPass = inputCfNewPass.getText().toString();
 
+        if (currentPass.isEmpty()) {
+            errorCurrentPass.setText("Required");
+            return;
+        }
         if (newPass.isEmpty()) {
             errorNewPass.setText("Required");
             return;
@@ -58,10 +65,11 @@ public class ResetPasswordActivity extends AppCompatActivity implements BasicVie
             return;
         }
 
-        resetPasswordPresenter.resetPass(newPass);
+        resetPasswordPresenter.resetPass(currentPass, newPass);
     }
 
     private void clearError() {
+        errorCurrentPass.setText("");
         errorNewPass.setText("");
         errorCfNewPass.setText("");
     }

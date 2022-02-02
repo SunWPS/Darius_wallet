@@ -15,7 +15,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.wallet.darius.ui.BasicView;
 import com.wallet.darius.ui.dashboard.DashboardActivity;
 import com.wallet.darius.R;
-import com.wallet.darius.ui.Password.ForgotPasswordActivity;
+import com.wallet.darius.ui.password.ForgotPasswordActivity;
 import com.wallet.darius.ui.signup.SignUpActivity;
 
 public class LoginActivity extends AppCompatActivity implements BasicView {

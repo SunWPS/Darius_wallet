@@ -1,4 +1,4 @@
-package com.wallet.darius.ui.Password;
+package com.wallet.darius.ui.password;
 
 import androidx.appcompat.app.AppCompatActivity;
 

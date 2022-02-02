@@ -10,33 +10,163 @@
     android:id="@+id/drawer_layout">
 
     <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:id="@+id/nav_view"
-        app:headerLayout="@layout/header"
-        app:menu="@menu/main_menu"
-        android:background="@color/white"
         android:layout_gravity="start"
-        app:itemTextColor="@color/white"
+        android:background="@color/white"
         android:backgroundTint="#282136"
-        />
+        android:visibility="gone"
+        app:headerLayout="@layout/header"
+        app:itemTextColor="@color/white"
+        app:menu="@menu/main_menu" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#180A30">
+        android:background="@drawable/dashboard_screen">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/tool_bar"
             android:layout_width="match_parent"
             android:layout_height="35dp"
-            android:background="?attr/colorPrimary"
+            android:background="@null"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:backgroundTint="#180A30" />
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/trackingView"
+            android:layout_width="382dp"
+            android:layout_height="140dp"
+            android:layout_marginTop="328dp"
+            android:background="@drawable/tracking_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.313"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tool_bar">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="71dp"
+                android:layout_height="67dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="37dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/eth_symbol" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="ETH | ETHEREUM"
+                android:textColor="#FFFFFF"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/usdPrice"
+                android:layout_width="240dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="39dp"
+                android:layout_marginTop="54dp"
+                android:fontFamily="@font/roboto_medium"
+                android:gravity="right"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp"
+                app:layout_constraintStart_toEndOf="@+id/imageView2"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/percent_change_1H"
+                android:layout_width="71dp"
+                android:layout_height="18dp"
+                android:layout_marginStart="84dp"
+                android:layout_marginBottom="9dp"
+                android:fontFamily="@font/roboto_medium"
+                android:gravity="right"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/percent_change_24H"
+                android:layout_width="71dp"
+                android:layout_height="18dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginBottom="9dp"
+                android:fontFamily="@font/roboto_medium"
+                android:gravity="right"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/percent_change_1H" />
+
+            <TextView
+                android:id="@+id/percent_change_7D"
+                android:layout_width="71dp"
+                android:layout_height="18dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginBottom="9dp"
+                android:fontFamily="@font/roboto_medium"
+                android:gravity="right"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/percent_change_24H" />
+
+            <ImageView
+                android:id="@+id/refresh_tracking"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/icon_refresh" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/my_balance_view"
+            android:layout_width="383dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/orange_yellow_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.51"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tool_bar">
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="195dp"
+                android:layout_height="63dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/eth_symbol" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="2333.2224 ETH"
+                android:textColor="#FFFFFF"
+                android:textSize="36sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.drawerlayout.widget.DrawerLayout>

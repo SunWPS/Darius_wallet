@@ -14,11 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Darius">
         <activity
-            android:name=".ui.Password.ForgotPasswordActivity"
+            android:name=".ui.password.ForgotPasswordActivity"
             android:exported="false"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".ui.Password.ResetPasswordActivity"
+            android:name=".ui.password.ResetPasswordActivity"
             android:exported="false"
             android:screenOrientation="portrait"/>
         <activity

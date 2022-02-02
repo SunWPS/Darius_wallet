@@ -1,4 +1,4 @@
-package com.wallet.darius.ui.Password;
+package com.wallet.darius.ui.password;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.wallet.darius.ui.BasicView;
