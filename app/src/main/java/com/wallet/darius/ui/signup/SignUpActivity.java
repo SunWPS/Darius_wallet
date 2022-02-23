@@ -11,15 +11,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wallet.darius.R;
-import com.wallet.darius.ui.BasicView;
+import com.wallet.darius.ui.UniversalView.BasicView;
 
 public class SignUpActivity extends AppCompatActivity implements BasicView {
 
-    EditText signupEmail, signupPassword, confirmPassword;
-    TextView errorEmail, errorPass, errorCfPass;
-    Button signupBtn;
+    private EditText signupEmail, signupPassword, confirmPassword;
+    private TextView errorEmail, errorPass, errorCfPass;
+    private Button signupBtn;
 
-    SignUpPresenter signUpPresenter;
+    private SignUpPresenter signUpPresenter;
+    private String realPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,8 @@ public class SignUpActivity extends AppCompatActivity implements BasicView {
         errorCfPass = findViewById(R.id.error_cfpass);
 
         signupBtn = findViewById(R.id.signupBtn);
+
+        realPassword = "";
 
         signUpPresenter = new SignUpPresenter(this);
 
@@ -70,7 +73,7 @@ public class SignUpActivity extends AppCompatActivity implements BasicView {
             return;
         }
 
-        // sign up and send data to firebase
+        realPassword = password;
         signUpPresenter.signUp(email, password);
     }
 
@@ -80,16 +83,13 @@ public class SignUpActivity extends AppCompatActivity implements BasicView {
         errorCfPass.setText("");
     }
 
-    @Override
-    public void finish() {
-        super.finish();
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-    }
 
     @Override
     public void onSuccess() {
         Intent intent = new Intent(SignUpActivity.this, VerifyEmailActivity.class);
+        intent.putExtra("password", realPassword);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         finish();
     }
 

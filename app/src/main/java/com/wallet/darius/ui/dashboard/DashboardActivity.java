@@ -8,48 +8,92 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.navigation.NavigationView;
+import com.wallet.darius.API.WalletAPI;
 import com.wallet.darius.R;
+import com.wallet.darius.ui.deposit.DepositActivity;
 import com.wallet.darius.ui.login.LoginActivity;
 import com.wallet.darius.ui.password.ResetPasswordActivity;
 
+import jnr.ffi.annotations.In;
+
 public class DashboardActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DashboardView{
 
-    DrawerLayout drawerLayout;
-    NavigationView navigationView;
-    Toolbar toolBar;
-    TextView menuEmail, usdPrice, percentChange1h, percentChange24h, percentChange7d;
-    ConstraintLayout trackingView;
-    ImageView refreshTracking;
+    private DrawerLayout drawerLayout;
+    private NavigationView navigationView;
+    private Toolbar toolBar;
+    private TextView menuEmail, usdPrice, percentChange1h, percentChange24h, percentChange7d, balance;
+    private ConstraintLayout trackingView;
+    private ImageView refreshTracking;
+    private Button depositBtn, transferBtn;
 
-    DashboardPresenter dashboardPresenter;
+    private DashboardPresenter dashboardPresenter;
+    private WalletAPI myWallet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
-        dashboardPresenter = new DashboardPresenter(this);
+        try {
+            dashboardPresenter = new DashboardPresenter(this,
+                    getPackageManager().getApplicationInfo(getPackageName(), PackageManager.GET_META_DATA));
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         toolBar = findViewById(R.id.tool_bar);
+        depositBtn = findViewById(R.id.depositBtn);
+        transferBtn = findViewById(R.id.transferBtn);
 
-        menuSetUpTracking();
+        setUpPolicy();
+        setUpButton();
+        setUpWalletBalance();
+        setUpTracking();
         menuSetUp();
         dashboardPresenter.getEthTracking();
     }
 
-    private void menuSetUpTracking() {
+    private void setUpPolicy() {
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy
+                .Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+    }
+
+    private void setUpButton() {
+        depositBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(DashboardActivity.this, DepositActivity.class);
+            intent.putExtra("balance", balance.getText());
+            intent.putExtra("address", myWallet.getCredential().getAddress());
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        });
+    }
+
+    private void setUpWalletBalance() {
+        balance = findViewById(R.id.balanceText);
+
+        Bundle extras = getIntent().getExtras();
+        myWallet = extras.getParcelable("wallet");
+        balance.setText("" + myWallet.retrieveBalance() + " ETH");
+    }
+
+    private void setUpTracking() {
         trackingView = findViewById(R.id.trackingView);
         usdPrice = trackingView.findViewById(R.id.usdPrice);
         percentChange1h = trackingView.findViewById(R.id.percent_change_1H);
@@ -109,7 +153,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                 startActivity(new Intent(DashboardActivity.this, ResetPasswordActivity.class));
                 break;
             case R.id.nav_logout:
-                dashboardPresenter.userSignOut();
+                dashboardPresenter.userSignOut(getFilesDir() + "/" + myWallet.getWalletName());
                 startActivity(new Intent(DashboardActivity.this, LoginActivity.class));
                 finish();
                 break;
@@ -124,7 +168,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         int red = getResources().getColor(R.color.red);
         int green = getResources().getColor(R.color.green);
 
-        usdPrice.setText(String.format("%.4f", price) + "$");
+        usdPrice.setText(String.format("%.4f", price) + " $");
 
         percentChange1h.setText((changeIn1H > 0 ? "+": "") + String.format("%.2f", changeIn1H) + "%" );
         percentChange1h.setTextColor(changeIn1H >= 0 ? green: red);

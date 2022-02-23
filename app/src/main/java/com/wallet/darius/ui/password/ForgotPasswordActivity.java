@@ -10,7 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wallet.darius.R;
-import com.wallet.darius.ui.BasicView;
+import com.wallet.darius.ui.UniversalView.BasicView;
 
 public class ForgotPasswordActivity extends AppCompatActivity implements BasicView {
 

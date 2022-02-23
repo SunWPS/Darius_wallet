@@ -3,28 +3,32 @@ package com.wallet.darius.ui.login;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
-
-import com.wallet.darius.ui.BasicView;
+import com.wallet.darius.API.WalletAPI;
+import com.wallet.darius.Function.DownloadWalletFunction;
+import com.wallet.darius.ui.UniversalView.LoginView;
 import com.wallet.darius.ui.dashboard.DashboardActivity;
 import com.wallet.darius.R;
 import com.wallet.darius.ui.password.ForgotPasswordActivity;
 import com.wallet.darius.ui.signup.SignUpActivity;
 
-public class LoginActivity extends AppCompatActivity implements BasicView {
+public class LoginActivity extends AppCompatActivity implements LoginView {
 
-    EditText loginEmail, loginPassword;
-    TextView errorEmail, errorPassword, singUp, forgotPass;
-    Button loginBtn;
+    private EditText loginEmail, loginPassword;
+    private TextView errorEmail, errorPassword, singUp, forgotPass;
+    private Button loginBtn;
 
-    LoginPresenter loginPresenter;
+    private LoginPresenter loginPresenter;
+    private DownloadWalletFunction downloadWalletFunction;
 
 
     @Override
@@ -40,7 +44,19 @@ public class LoginActivity extends AppCompatActivity implements BasicView {
         forgotPass = findViewById(R.id.fg_pass);
         loginBtn = findViewById(R.id.loginBtn);
 
-        loginPresenter = new LoginPresenter(this);
+        try {
+            ApplicationInfo ai = getPackageManager().getApplicationInfo(getPackageName(), PackageManager.GET_META_DATA);
+            Bundle metaData = ai.metaData;
+
+            downloadWalletFunction = new DownloadWalletFunction(this,
+                    getFilesDir().toString(),
+                    metaData.getString("infuraURI"));
+
+        } catch (Exception e) {
+            e.getMessage();
+        }
+
+        loginPresenter = new LoginPresenter(this, downloadWalletFunction);
 
         // setup Button
         loginBtn.setOnClickListener(view -> onLoginBtnClick());
@@ -85,22 +101,18 @@ public class LoginActivity extends AppCompatActivity implements BasicView {
     }
 
     @Override
-    protected void onStart(){
-        super.onStart();
-        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-            startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
-            finish();
-        }
-    }
-
-    @Override
-    public void onSuccess() {
-        startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
-        finish();
-    }
-
-    @Override
     public void onFail(String message) {
         Toast.makeText(LoginActivity.this, message, Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void goToDashBoard(WalletAPI wallet) {
+        Log.i("xx", "LoginActivity " + wallet.getCredential().getAddress());
+        Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
+        intent.putExtra("wallet", wallet);
+
+        startActivity(intent);
+        finish();
+    }
+
 }

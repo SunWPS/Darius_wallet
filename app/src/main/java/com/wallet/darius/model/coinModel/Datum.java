@@ -13,14 +13,14 @@ public class Datum{
     public String max_supply;
     public String circulating_supply;
     public String total_supply;
-    public String platform;
+    public Platform platform;
     public String cmc_rank;
     public String self_reported_circulating_supply;
     public String self_reported_market_cap;
     public String last_updated;
     public Quote quote;
 
-    public Datum(String id, String name, String symbol, String slug, String num_market_pairs, String date_added, ArrayList<String> tags, String max_supply, String circulating_supply, String total_supply, String platform, String cmc_rank, String self_reported_circulating_supply, String self_reported_market_cap, String last_updated, Quote quote) {
+    public Datum(String id, String name, String symbol, String slug, String num_market_pairs, String date_added, ArrayList<String> tags, String max_supply, String circulating_supply, String total_supply,Platform platform, String cmc_rank, String self_reported_circulating_supply, String self_reported_market_cap, String last_updated, Quote quote) {
         this.id = id;
         this.name = name;
         this.symbol = symbol;
@@ -119,11 +119,11 @@ public class Datum{
         this.total_supply = total_supply;
     }
 
-    public String getPlatform() {
+    public Platform getPlatform() {
         return platform;
     }
 
-    public void setPlatform(String platform) {
+    public void setPlatform(Platform platform) {
         this.platform = platform;
     }
 

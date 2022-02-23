@@ -1,11 +1,11 @@
 package com.wallet.darius.ui.signup;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.wallet.darius.ui.BasicView;
+import com.wallet.darius.ui.UniversalView.BasicView;
 
 public class SignUpPresenter {
-    BasicView basicView;
-    FirebaseAuth auth;
+    private BasicView basicView;
+    private FirebaseAuth auth;
 
     public SignUpPresenter(BasicView basicView) {
         this.basicView = basicView;

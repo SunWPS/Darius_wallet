@@ -1,13 +1,12 @@
 package com.wallet.darius.API;
 
-import android.util.Base64;
+import android.content.pm.ApplicationInfo;
 import android.util.Log;
 
 import com.google.gson.Gson;
 
 import com.wallet.darius.model.coinModel.Root;
 import com.wallet.darius.ui.dashboard.DashboardPresenter;
-import com.wallet.darius.ui.dashboard.DashboardView;
 
 import java.io.IOException;
 
@@ -18,14 +17,16 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class CoinInfoAPi {
+public class CoinInfoAPI {
 
-    DashboardPresenter dashboardPresenter;
-    private static String apiKey = "";
-    private static String uri = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest";
+    private DashboardPresenter dashboardPresenter;
+    private static String apiKey;
+    private static String uri;
 
-    public CoinInfoAPi(DashboardPresenter dashboardPresenter) {
+    public CoinInfoAPI(DashboardPresenter dashboardPresenter, String apiKey, String uri) {
         this.dashboardPresenter = dashboardPresenter;
+        this.apiKey = apiKey;
+        this.uri = uri;
     }
 
     public void apiInteract() {
@@ -55,6 +56,7 @@ public class CoinInfoAPi {
 
                 Gson gson = new Gson();
                 Root coin = gson.fromJson(responseBody, Root.class);
+
 
                 dashboardPresenter.extractEthInfo(coin.getData().get(0).getQuote().getUSD());
             }

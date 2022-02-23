@@ -1,7 +1,7 @@
 package com.wallet.darius.ui.password;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.wallet.darius.ui.BasicView;
+import com.wallet.darius.ui.UniversalView.BasicView;
 
 public class ForgotPasswordPresenter {
 

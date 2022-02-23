@@ -21,17 +21,18 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <Button
-        android:id="@+id/backToLoginBtn"
-        android:layout_width="200dp"
+        android:id="@+id/next_to_username"
+        android:layout_width="136dp"
         android:layout_height="51dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginBottom="129dp"
         android:background="@drawable/btn_orange"
         android:fontFamily="@font/roboto_bold"
-        android:text="Go to dashboard"
+        android:text="Finish"
         android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailLabel" />
+        app:layout_constraintHorizontal_bias="0.878"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/Textview13"
@@ -60,4 +61,5 @@
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Textview13" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

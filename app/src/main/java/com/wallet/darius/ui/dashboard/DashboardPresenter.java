@@ -1,27 +1,37 @@
 package com.wallet.darius.ui.dashboard;
 
+import android.content.pm.ApplicationInfo;
+import android.os.Bundle;
+
 import com.google.firebase.auth.FirebaseAuth;
-import com.wallet.darius.API.CoinInfoAPi;
-import com.wallet.darius.model.coinModel.Root;
+import com.wallet.darius.API.CoinInfoAPI;
 import com.wallet.darius.model.coinModel.USD;
+
+import java.io.File;
 
 public class DashboardPresenter {
 
-    DashboardView dashboardView;
-    FirebaseAuth auth;
-    CoinInfoAPi coinInfoAPi;
+    private DashboardView dashboardView;
+    private FirebaseAuth auth;
+    private CoinInfoAPI coinInfoAPi;
 
-    public DashboardPresenter(DashboardView dashboardView) {
+    public DashboardPresenter(DashboardView dashboardView, ApplicationInfo ai) {
         this.dashboardView = dashboardView;
         this.auth = FirebaseAuth.getInstance();
-        coinInfoAPi = new CoinInfoAPi(this);
+
+        Bundle bundle = ai.metaData;
+        coinInfoAPi = new CoinInfoAPI(this,
+                bundle.getString("cmcAPIkey"),
+                bundle.getString("cmcURI"));
     }
 
     public String getUserEmail() {
         return auth.getCurrentUser().getEmail();
     }
 
-    public void userSignOut() {
+    public void userSignOut(String credentialPath) {
+        File file  = new File(credentialPath);
+        file.delete();
         auth.signOut();
     }
 
