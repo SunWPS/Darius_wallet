@@ -6,7 +6,6 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,8 +22,8 @@ public class DepositActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_deposit);
 
-        totalBalance = findViewById(R.id.totalBalance);
-        currentNetwork = findViewById(R.id.currentNetwork);
+        totalBalance = findViewById(R.id.availableBalance);
+        currentNetwork = findViewById(R.id.transferCurrentNetwork);
         address = findViewById(R.id.walletAddress);
         clipboardBtn = findViewById(R.id.clipboardBtn);
 

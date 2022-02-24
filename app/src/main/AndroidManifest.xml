@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Darius">
         <activity
+            android:name=".ui.transfer.TransferActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.deposit.DepositActivity"
             android:exported="false" />
         <activity
@@ -56,15 +59,13 @@
             android:resource="@array/preloaded_fonts" />
         <meta-data
             android:name="cmcAPIkey"
-            android:value="${cmcAPIkey}"/>
+            android:value="${cmcAPIkey}" />
         <meta-data
             android:name="cmcURI"
-            android:value="${cmcURI}"/>
+            android:value="${cmcURI}" />
         <meta-data
             android:name="infuraURI"
-            android:value="${infuraURI}"/>
-
-
+            android:value="${infuraURI}" />
     </application>
 
 </manifest>

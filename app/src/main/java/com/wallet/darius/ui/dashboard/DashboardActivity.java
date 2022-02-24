@@ -26,6 +26,9 @@ import com.wallet.darius.R;
 import com.wallet.darius.ui.deposit.DepositActivity;
 import com.wallet.darius.ui.login.LoginActivity;
 import com.wallet.darius.ui.password.ResetPasswordActivity;
+import com.wallet.darius.ui.transfer.TransferActivity;
+
+import java.math.BigDecimal;
 
 import jnr.ffi.annotations.In;
 
@@ -83,6 +86,13 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });
+
+        transferBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(DashboardActivity.this, TransferActivity.class);
+            intent.putExtra("wallet", myWallet);
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        });
     }
 
     private void setUpWalletBalance() {
@@ -90,7 +100,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
         Bundle extras = getIntent().getExtras();
         myWallet = extras.getParcelable("wallet");
-        balance.setText("" + myWallet.retrieveBalance() + " ETH");
+        balance.setText("" + myWallet.retrieveBalance().setScale(4, BigDecimal.ROUND_UP) + " ETH");
     }
 
     private void setUpTracking() {

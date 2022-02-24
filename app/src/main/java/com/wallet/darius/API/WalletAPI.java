@@ -28,7 +28,6 @@ import org.web3j.utils.Convert;
 import java.io.File;
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.math.MathContext;
 import java.math.RoundingMode;
 import java.security.Provider;
 import java.security.Security;
@@ -129,7 +128,6 @@ public class WalletAPI implements Parcelable {
     public void loadWallet(String walletName) {
         try {
             this.walletName = walletName;
-            Log.i("xx", "loadwallet " + password);
             this.credential = WalletUtils.loadCredentials(password, file + "/" + walletName);
         } catch (Exception e) {
             Log.i("xx", e.getMessage());
@@ -141,19 +139,20 @@ public class WalletAPI implements Parcelable {
             EthGetBalance balanceWei = web3.ethGetBalance(credential.getAddress(), DefaultBlockParameterName.LATEST).sendAsync().get();
             BigInteger unscaledBalance = balanceWei.getBalance();
 
-            BigDecimal balance = Convert.fromWei(unscaledBalance.toString(), Convert.Unit.ETHER)
-                    .setScale(4, BigDecimal.ROUND_UP);
+            BigDecimal balance = new BigDecimal(unscaledBalance)
+                    .divide(new BigDecimal(1000000000000000000L), 8, RoundingMode.HALF_UP);
 
-            return  balance;
+            return balance;
         } catch (Exception e) {
             Log.i("xx", e.getMessage());
         }
         return new BigDecimal(0);
     }
 
-    public boolean makeTransaction(Double amount, String toAddress) {
+    public boolean makeTransaction(String toAddress, BigDecimal amount) {
         try {
-            TransactionReceipt receipt = Transfer.sendFunds(web3, credential, toAddress, BigDecimal.valueOf(amount), Convert.Unit.ETHER).send();
+            TransactionReceipt receipt = Transfer.sendFunds(web3, credential, toAddress, amount, Convert.Unit.ETHER).send();
+            Log.i("xx", receipt.toString());
             return true;
         } catch (Exception e) {
             Log.i("xx", e.getMessage());
@@ -230,7 +229,4 @@ public class WalletAPI implements Parcelable {
         parcel.writeString(uri);
     }
 
-    public String toString() {
-        return credential.getAddress() + " Balance:" + retrieveBalance();
-    }
 }
