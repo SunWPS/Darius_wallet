@@ -23,14 +23,13 @@ import androidx.appcompat.widget.Toolbar;
 import com.google.android.material.navigation.NavigationView;
 import com.wallet.darius.API.WalletAPI;
 import com.wallet.darius.R;
-import com.wallet.darius.ui.deposit.DepositActivity;
+import com.wallet.darius.ui.depositAndTransfer.DepositActivity;
 import com.wallet.darius.ui.login.LoginActivity;
 import com.wallet.darius.ui.password.ResetPasswordActivity;
-import com.wallet.darius.ui.transfer.TransferActivity;
+import com.wallet.darius.ui.depositAndTransfer.TransferActivity;
 
 import java.math.BigDecimal;
 
-import jnr.ffi.annotations.In;
 
 public class DashboardActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DashboardView{
 
@@ -63,11 +62,19 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         toolBar = findViewById(R.id.tool_bar);
         depositBtn = findViewById(R.id.depositBtn);
         transferBtn = findViewById(R.id.transferBtn);
+        balance = findViewById(R.id.balanceText);
+        trackingView = findViewById(R.id.trackingView);
+        usdPrice = trackingView.findViewById(R.id.usdPrice);
+        percentChange1h = trackingView.findViewById(R.id.percent_change_1H);
+        percentChange24h = trackingView.findViewById(R.id.percent_change_24H);
+        percentChange7d = trackingView.findViewById(R.id.percent_change_7D);
+        refreshTracking = trackingView.findViewById(R.id.refresh_tracking);
+
+        Bundle extras = getIntent().getExtras();
+        myWallet = extras.getParcelable("wallet");
 
         setUpPolicy();
         setUpButton();
-        setUpWalletBalance();
-        setUpTracking();
         menuSetUp();
         dashboardPresenter.getEthTracking();
     }
@@ -95,22 +102,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         });
     }
 
-    private void setUpWalletBalance() {
-        balance = findViewById(R.id.balanceText);
-
-        Bundle extras = getIntent().getExtras();
-        myWallet = extras.getParcelable("wallet");
-        balance.setText("" + myWallet.retrieveBalance().setScale(4, BigDecimal.ROUND_UP) + " ETH");
-    }
-
     private void setUpTracking() {
-        trackingView = findViewById(R.id.trackingView);
-        usdPrice = trackingView.findViewById(R.id.usdPrice);
-        percentChange1h = trackingView.findViewById(R.id.percent_change_1H);
-        percentChange24h = trackingView.findViewById(R.id.percent_change_24H);
-        percentChange7d = trackingView.findViewById(R.id.percent_change_7D);
-        refreshTracking = trackingView.findViewById(R.id.refresh_tracking);
-
         refreshTracking.setOnClickListener(view -> {
             dashboardPresenter.getEthTracking();
             Log.i("xx", "click");
@@ -188,5 +180,13 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
         percentChange7d.setText((changeIn7D > 0 ? "+": "") + String.format("%.2f", changeIn7D) + "%");
         percentChange7d.setTextColor(changeIn7D >= 0 ? green: red);
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+        balance.setText("" + myWallet.retrieveBalance().setScale(4, BigDecimal.ROUND_UP) + " ETH");
+        setUpTracking();
     }
 }

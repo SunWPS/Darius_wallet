@@ -14,10 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Darius">
         <activity
-            android:name=".ui.transfer.TransferActivity"
+            android:name=".ui.depositAndTransfer.TransferActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.deposit.DepositActivity"
+            android:name=".ui.depositAndTransfer.DepositActivity"
             android:exported="false" />
         <activity
             android:name=".ui.password.ForgotPasswordActivity"

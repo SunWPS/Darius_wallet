@@ -1,4 +1,4 @@
-package com.wallet.darius.ui.deposit;
+package com.wallet.darius.ui.depositAndTransfer;
 
 import androidx.appcompat.app.AppCompatActivity;
 

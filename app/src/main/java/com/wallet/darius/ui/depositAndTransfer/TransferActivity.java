@@ -1,8 +1,12 @@
-package com.wallet.darius.ui.transfer;
+package com.wallet.darius.ui.depositAndTransfer;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -12,7 +16,6 @@ import com.wallet.darius.R;
 
 import java.math.BigDecimal;
 
-import jnr.constants.platform.WaitFlags;
 
 public class TransferActivity extends AppCompatActivity {
 
@@ -20,7 +23,8 @@ public class TransferActivity extends AppCompatActivity {
     private EditText receiverAddress, amountText;
     private Button letTransferBtn;
 
-    WalletAPI myWallet;
+    private WalletAPI myWallet;
+    private Dialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +39,12 @@ public class TransferActivity extends AppCompatActivity {
         amountText = findViewById(R.id.amountText);
         letTransferBtn = findViewById(R.id.letTransferBtn);
 
+        dialog = new Dialog(this);
+
         Bundle extras = getIntent().getExtras();
         myWallet = extras.getParcelable("wallet");
         availableBalance.setText(myWallet.retrieveBalance() + " ETH");
+
 
         letTransferBtn.setOnClickListener(view -> {
             clearError();
@@ -57,12 +64,59 @@ public class TransferActivity extends AppCompatActivity {
                 return;
             }
 
-            myWallet.makeTransaction(receiverAddress.getText().toString(), amount);
-
-            // TODO: confirm, Progress
-
-            clearEditText();
+            confirmDialog(receiverAddress.getText().toString(), amount);
         });
+    }
+
+    private void confirmDialog(String address, BigDecimal amount) {
+        dialog.setContentView(R.layout.confirm_transaction_dialog);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        Button noBtn = dialog.findViewById(R.id.noConfirmBtn);
+        Button yesBtn = dialog.findViewById(R.id.yesConfirmBtn);
+        TextView confirmReceiverAddress = dialog.findViewById(R.id.confirmReceiverAddress);
+        TextView confirmAmountText = dialog.findViewById(R.id.confirmAmountText);
+
+        confirmReceiverAddress.setText(address);
+        confirmAmountText.setText(amount + " ETH");
+
+        noBtn.setOnClickListener(view -> {
+            dialog.dismiss();
+        });
+
+        yesBtn.setOnClickListener(view -> {
+
+            dialog.setContentView(R.layout.processing_dialog);
+            dialog.show();
+
+            Thread backgroundThread = new Thread(() -> {
+                Log.i("xx", address);
+                boolean successful = myWallet.makeTransaction(address, amount);
+
+                runOnUiThread(() -> {
+                    if (successful) {
+                        dialog.setContentView(R.layout.successful_dialog);
+
+                        Button okBtn = dialog.findViewById(R.id.okSuccessfulBtn);
+                        okBtn.setOnClickListener(view1 -> {
+                            dialog.dismiss();
+                            clearEditText();
+                        });
+                    } else {
+                        dialog.setContentView(R.layout.failed_dailog);
+
+                        Button okBtn = dialog.findViewById(R.id.okFailedBtn);
+                        okBtn.setOnClickListener(view1 -> {
+                            dialog.dismiss();
+                            clearEditText();
+                        });
+                    }
+                    dialog.show();
+                });
+            });
+            backgroundThread.start();
+        });
+        dialog.show();
     }
 
     private void clearError() {
