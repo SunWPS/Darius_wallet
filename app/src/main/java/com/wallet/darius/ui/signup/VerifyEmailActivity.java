@@ -27,8 +27,8 @@ public class VerifyEmailActivity extends AppCompatActivity implements BasicView 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verify_email);
 
-        emailLabel = findViewById(R.id.emailLabel);
-        nextToUsername = findViewById(R.id.next_to_username);
+        emailLabel = findViewById(R.id.vf_email_label);
+        nextToUsername = findViewById(R.id.vf_finish_btn);
 
         try {
             verifyEmailPresenter = new VerifyEmailPresenter(this,

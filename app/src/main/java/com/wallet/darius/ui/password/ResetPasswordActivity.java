@@ -27,13 +27,13 @@ public class ResetPasswordActivity extends AppCompatActivity implements BasicVie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reset_password);
 
-        inputCurrentPass = findViewById(R.id.currentPassword);
-        inputNewPass = findViewById(R.id.newPassword);
-        inputCfNewPass = findViewById(R.id.cfNewPassword);
-        errorCurrentPass = findViewById(R.id.error_currentPass);
-        errorNewPass = findViewById(R.id.error_newPass);
-        errorCfNewPass = findViewById(R.id.error_cfNewPass);
-        resetPassBtn = findViewById(R.id.resetPassBtn);
+        inputCurrentPass = findViewById(R.id.rp_current_password);
+        inputNewPass = findViewById(R.id.rp_new_password);
+        inputCfNewPass = findViewById(R.id.rp_cf_new_password);
+        errorCurrentPass = findViewById(R.id.rp_error_currentPass);
+        errorNewPass = findViewById(R.id.rp_error_newPass);
+        errorCfNewPass = findViewById(R.id.rp_error_cfNewPass);
+        resetPassBtn = findViewById(R.id.rp_reset_pass_btn);
 
         resetPasswordPresenter = new ResetPasswordPresenter(this);
 

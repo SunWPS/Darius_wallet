@@ -22,10 +22,10 @@ public class DepositActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_deposit);
 
-        totalBalance = findViewById(R.id.availableBalance);
-        currentNetwork = findViewById(R.id.transferCurrentNetwork);
-        address = findViewById(R.id.walletAddress);
-        clipboardBtn = findViewById(R.id.clipboardBtn);
+        totalBalance = findViewById(R.id.dp_available_balance);
+        currentNetwork = findViewById(R.id.dp_transfer_current_network);
+        address = findViewById(R.id.dp_wallet_address);
+        clipboardBtn = findViewById(R.id.dp_clipboard_btn);
 
         Bundle bundle = getIntent().getExtras();
 

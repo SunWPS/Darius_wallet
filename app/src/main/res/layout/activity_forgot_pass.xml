@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/forgotpass_screen"
+    android:background="@drawable/screen_forgotpass"
     tools:context=".ui.password.ForgotPasswordActivity">
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/forgotPassTextFp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="382dp"
@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView14"
+        android:id="@+id/infoTextFp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -31,14 +31,14 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+        app:layout_constraintTop_toBottomOf="@+id/forgotPassTextFp" />
 
     <EditText
-        android:id="@+id/email_to_send"
+        android:id="@+id/fp_email_to_send"
         android:layout_width="313dp"
         android:layout_height="48dp"
         android:layout_marginTop="8dp"
-        android:background="@drawable/input_text"
+        android:background="@drawable/bg_input_text"
         android:ems="10"
         android:fontFamily="@font/roboto"
         android:hint="Email"
@@ -47,10 +47,10 @@
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+        app:layout_constraintTop_toBottomOf="@+id/emailTextFp" />
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/emailTextFp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
@@ -60,10 +60,10 @@
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+        app:layout_constraintTop_toBottomOf="@+id/infoTextFp" />
 
     <TextView
-        android:id="@+id/error_email_to_send"
+        android:id="@+id/fp_error_email_to_send"
         android:layout_width="180dp"
         android:layout_height="0dp"
         android:layout_marginStart="89dp"
@@ -72,20 +72,20 @@
         android:gravity="end|right"
         android:textColor="#FB0000"
         android:textSize="10sp"
-        app:layout_constraintBottom_toTopOf="@+id/email_to_send"
-        app:layout_constraintStart_toEndOf="@+id/textView15" />
+        app:layout_constraintBottom_toTopOf="@+id/fp_email_to_send"
+        app:layout_constraintStart_toEndOf="@+id/emailTextFp" />
 
     <Button
-        android:id="@+id/emailSendBtn"
+        android:id="@+id/fp_email_send_btn"
         android:layout_width="200dp"
         android:layout_height="51dp"
         android:layout_marginTop="53dp"
-        android:background="@drawable/btn_orange"
+        android:background="@drawable/bg_orange"
         android:fontFamily="@font/roboto_bold"
         android:text="send"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email_to_send" />
+        app:layout_constraintTop_toBottomOf="@+id/fp_email_to_send" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

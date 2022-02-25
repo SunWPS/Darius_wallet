@@ -8,17 +8,17 @@
     tools:context=".ui.depositAndTransfer.TransferActivity">
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/transferImgTf"
         android:layout_width="258dp"
         android:layout_height="212dp"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/transfer_img" />
+        app:srcCompat="@drawable/img_transfer" />
 
     <TextView
-        android:id="@+id/textView25"
+        android:id="@+id/transferTextTf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_bold"
@@ -27,10 +27,10 @@
         android:textSize="36dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+        app:layout_constraintTop_toBottomOf="@+id/transferImgTf" />
 
     <TextView
-        android:id="@+id/textView26"
+        android:id="@+id/avaliableTextTf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="35dp"
@@ -40,10 +40,10 @@
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView25" />
+        app:layout_constraintTop_toBottomOf="@+id/transferTextTf" />
 
     <TextView
-        android:id="@+id/availableBalance"
+        android:id="@+id/tf_available_balance"
         android:layout_width="245dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
@@ -53,10 +53,10 @@
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView25" />
+        app:layout_constraintTop_toBottomOf="@+id/transferTextTf" />
 
     <TextView
-        android:id="@+id/textView27"
+        android:id="@+id/currentNetTf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -66,10 +66,10 @@
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView26" />
+        app:layout_constraintTop_toBottomOf="@+id/avaliableTextTf" />
 
     <TextView
-        android:id="@+id/transferCurrentNetwork"
+        android:id="@+id/tf_current_network"
         android:layout_width="225dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -80,10 +80,10 @@
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/availableBalance" />
+        app:layout_constraintTop_toBottomOf="@+id/tf_available_balance" />
 
     <TextView
-        android:id="@+id/textView28"
+        android:id="@+id/addressTextTf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -93,15 +93,15 @@
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView27" />
+        app:layout_constraintTop_toBottomOf="@+id/currentNetTf" />
 
     <EditText
-        android:id="@+id/receiverAddress"
+        android:id="@+id/tf_receiver_address"
         android:layout_width="370dp"
         android:layout_height="48dp"
         android:layout_marginStart="35dp"
         android:layout_marginTop="8dp"
-        android:background="@drawable/input_text"
+        android:background="@drawable/bg_input_text"
         android:ems="10"
         android:fontFamily="@font/roboto"
         android:hint="Address"
@@ -109,10 +109,10 @@
         android:padding="8dp"
         android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView28" />
+        app:layout_constraintTop_toBottomOf="@+id/addressTextTf" />
 
     <TextView
-        android:id="@+id/textView29"
+        android:id="@+id/amountTextTf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
@@ -122,15 +122,15 @@
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/receiverAddress" />
+        app:layout_constraintTop_toBottomOf="@+id/tf_receiver_address" />
 
     <EditText
-        android:id="@+id/amountText"
+        android:id="@+id/tf_amount"
         android:layout_width="370dp"
         android:layout_height="48dp"
         android:layout_marginStart="35dp"
         android:layout_marginTop="8dp"
-        android:background="@drawable/input_text"
+        android:background="@drawable/bg_input_text"
         android:ems="10"
         android:fontFamily="@font/roboto"
         android:hint="Amount"
@@ -138,24 +138,24 @@
         android:padding="8dp"
         android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView29" />
+        app:layout_constraintTop_toBottomOf="@+id/amountTextTf" />
 
     <Button
-        android:id="@+id/letTransferBtn"
+        android:id="@+id/tf_transfer_btn"
         android:layout_width="173dp"
         android:layout_height="62dp"
         android:layout_marginTop="55dp"
-        android:background="@drawable/orange_yellow_background"
+        android:background="@drawable/bg_orange_yellow"
         android:fontFamily="@font/roboto_medium"
         android:text="TRANSFER"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/amountText" />
+        app:layout_constraintTop_toBottomOf="@+id/tf_amount" />
 
     <TextView
-        android:id="@+id/errorAddress"
+        android:id="@+id/tf_error_address"
         android:layout_width="173dp"
         android:layout_height="17dp"
         android:layout_marginEnd="32dp"
@@ -163,11 +163,11 @@
         android:gravity="end|right"
         android:textColor="#FB0000"
         android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/receiverAddress"
+        app:layout_constraintBottom_toTopOf="@+id/tf_receiver_address"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
-        android:id="@+id/errorAmount"
+        android:id="@+id/tf_error_amount"
         android:layout_width="250dp"
         android:layout_height="17dp"
         android:layout_marginEnd="32dp"
@@ -175,7 +175,7 @@
         android:gravity="end|right"
         android:textColor="#FB0000"
         android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/amountText"
+        app:layout_constraintBottom_toTopOf="@+id/tf_amount"
         app:layout_constraintEnd_toEndOf="parent" />
 
 

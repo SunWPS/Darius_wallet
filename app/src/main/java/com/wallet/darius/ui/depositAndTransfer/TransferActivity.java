@@ -31,13 +31,13 @@ public class TransferActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transfer);
 
-        availableBalance = findViewById(R.id.availableBalance);
-        currentNetwork = findViewById(R.id.currentPassword);
-        errorAddress = findViewById(R.id.errorAddress);
-        errorAmount = findViewById(R.id.errorAmount);
-        receiverAddress = findViewById(R.id.receiverAddress);
-        amountText = findViewById(R.id.amountText);
-        letTransferBtn = findViewById(R.id.letTransferBtn);
+        availableBalance = findViewById(R.id.tf_available_balance);
+        currentNetwork = findViewById(R.id.tf_current_network);
+        errorAddress = findViewById(R.id.tf_error_address);
+        errorAmount = findViewById(R.id.tf_error_amount);
+        receiverAddress = findViewById(R.id.tf_receiver_address);
+        amountText = findViewById(R.id.tf_amount);
+        letTransferBtn = findViewById(R.id.tf_transfer_btn);
 
         dialog = new Dialog(this);
 
@@ -69,7 +69,7 @@ public class TransferActivity extends AppCompatActivity {
     }
 
     private void confirmDialog(String address, BigDecimal amount) {
-        dialog.setContentView(R.layout.confirm_transaction_dialog);
+        dialog.setContentView(R.layout.dialog_confirm_transaction);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         Button noBtn = dialog.findViewById(R.id.noConfirmBtn);
@@ -86,7 +86,7 @@ public class TransferActivity extends AppCompatActivity {
 
         yesBtn.setOnClickListener(view -> {
 
-            dialog.setContentView(R.layout.processing_dialog);
+            dialog.setContentView(R.layout.dialog_processing);
             dialog.show();
 
             Thread backgroundThread = new Thread(() -> {
@@ -95,7 +95,7 @@ public class TransferActivity extends AppCompatActivity {
 
                 runOnUiThread(() -> {
                     if (successful) {
-                        dialog.setContentView(R.layout.successful_dialog);
+                        dialog.setContentView(R.layout.dialog_successful);
 
                         Button okBtn = dialog.findViewById(R.id.okSuccessfulBtn);
                         okBtn.setOnClickListener(view1 -> {
@@ -103,7 +103,7 @@ public class TransferActivity extends AppCompatActivity {
                             clearEditText();
                         });
                     } else {
-                        dialog.setContentView(R.layout.failed_dailog);
+                        dialog.setContentView(R.layout.dailog_failed);
 
                         Button okBtn = dialog.findViewById(R.id.okFailedBtn);
                         okBtn.setOnClickListener(view1 -> {

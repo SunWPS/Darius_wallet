@@ -60,15 +60,15 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         toolBar = findViewById(R.id.tool_bar);
-        depositBtn = findViewById(R.id.depositBtn);
-        transferBtn = findViewById(R.id.transferBtn);
-        balance = findViewById(R.id.balanceText);
-        trackingView = findViewById(R.id.trackingView);
-        usdPrice = trackingView.findViewById(R.id.usdPrice);
-        percentChange1h = trackingView.findViewById(R.id.percent_change_1H);
-        percentChange24h = trackingView.findViewById(R.id.percent_change_24H);
-        percentChange7d = trackingView.findViewById(R.id.percent_change_7D);
-        refreshTracking = trackingView.findViewById(R.id.refresh_tracking);
+        depositBtn = findViewById(R.id.db_deposit_btn);
+        transferBtn = findViewById(R.id.db_transfer_btn);
+        balance = findViewById(R.id.db_balance_text);
+        trackingView = findViewById(R.id.db_tracking_view);
+        usdPrice = trackingView.findViewById(R.id.db_usd_price);
+        percentChange1h = trackingView.findViewById(R.id.db_percent_change_1H);
+        percentChange24h = trackingView.findViewById(R.id.db_percent_change_24H);
+        percentChange7d = trackingView.findViewById(R.id.db_percent_change_7D);
+        refreshTracking = trackingView.findViewById(R.id.db_refresh_tracking);
 
         Bundle extras = getIntent().getExtras();
         myWallet = extras.getParcelable("wallet");

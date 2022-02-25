@@ -36,13 +36,13 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_screen);
 
-        loginEmail = findViewById(R.id.loginEmail);
-        loginPassword = findViewById(R.id.loginPassword);
-        errorEmail = findViewById(R.id.error_email);
-        errorPassword = findViewById(R.id.error_pass);
-        singUp = findViewById(R.id.signup);
-        forgotPass = findViewById(R.id.fg_pass);
-        loginBtn = findViewById(R.id.loginBtn);
+        loginEmail = findViewById(R.id.log_login_email);
+        loginPassword = findViewById(R.id.log_login_password);
+        errorEmail = findViewById(R.id.log_error_email);
+        errorPassword = findViewById(R.id.log_error_pass);
+        singUp = findViewById(R.id.log_signup);
+        forgotPass = findViewById(R.id.log_fg_pass);
+        loginBtn = findViewById(R.id.log_login_btn);
 
         try {
             ApplicationInfo ai = getPackageManager().getApplicationInfo(getPackageName(), PackageManager.GET_META_DATA);

@@ -14,7 +14,19 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/corner_background">
+            android:background="@drawable/bg_corner">
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="138dp"
+                android:layout_height="118dp"
+                android:layout_marginTop="76dp"
+                android:indeterminateDrawable="@drawable/circular_progress_bar"
+                android:indeterminateDuration="@android:integer/config_longAnimTime"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView6" />
 
             <ImageView
                 android:id="@+id/imageView6"
@@ -25,44 +37,21 @@
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/header_background" />
+                app:srcCompat="@drawable/bg_header" />
 
             <TextView
-                android:id="@+id/textView31"
+                android:id="@+id/textView32"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
                 android:fontFamily="@font/roboto_bold"
-                android:text="Transfer Failed"
+                android:text="Processing ..."
                 android:textColor="#180A30"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <Button
-                android:id="@+id/okFailedBtn"
-                android:layout_width="139dp"
-                android:layout_height="48dp"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/red_purple_background"
-                android:text="OK"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.502"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <ImageView
-                android:id="@+id/imageView9"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_marginTop="44dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView6"
-                app:srcCompat="@drawable/failed_ic" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

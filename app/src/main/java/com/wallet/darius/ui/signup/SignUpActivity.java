@@ -27,15 +27,15 @@ public class SignUpActivity extends AppCompatActivity implements BasicView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        signupEmail = findViewById(R.id.signupEmail);
-        signupPassword = findViewById(R.id.signupPassword);
-        confirmPassword = findViewById(R.id.confirmPassword);
+        signupEmail = findViewById(R.id.su_signup_email);
+        signupPassword = findViewById(R.id.su_signup_password);
+        confirmPassword = findViewById(R.id.su_confirm_password);
 
-        errorEmail = findViewById(R.id.error_email);
-        errorPass = findViewById(R.id.error_pass);
-        errorCfPass = findViewById(R.id.error_cfpass);
+        errorEmail = findViewById(R.id.su_error_email);
+        errorPass = findViewById(R.id.su_error_pass);
+        errorCfPass = findViewById(R.id.su_error_cfpass);
 
-        signupBtn = findViewById(R.id.signupBtn);
+        signupBtn = findViewById(R.id.su_signup_btn);
 
         realPassword = "";
 

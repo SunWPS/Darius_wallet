@@ -15,14 +15,14 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/corner_background">
+            android:background="@drawable/bg_corner">
 
             <Button
                 android:id="@+id/yesConfirmBtn"
                 android:layout_width="139dp"
                 android:layout_height="48dp"
                 android:layout_marginBottom="16dp"
-                android:background="@drawable/green_blue_background"
+                android:background="@drawable/bg_green_blue"
                 android:text="YES"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
@@ -38,7 +38,7 @@
                 android:layout_width="139dp"
                 android:layout_height="48dp"
                 android:layout_marginBottom="16dp"
-                android:background="@drawable/gray_background"
+                android:background="@drawable/bg_gray"
                 android:text="NO"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
@@ -58,7 +58,7 @@
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/header_background" />
+                app:srcCompat="@drawable/bg_header" />
 
             <TextView
                 android:id="@+id/textView30"

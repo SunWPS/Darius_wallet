@@ -8,17 +8,17 @@
     tools:context=".ui.depositAndTransfer.DepositActivity">
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/depositImgDp"
         android:layout_width="258dp"
         android:layout_height="258dp"
         android:layout_marginTop="44dp"
-        android:src="@drawable/deposit_img"
+        android:src="@drawable/img_deposit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/depositTextDp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -28,10 +28,10 @@
         android:textSize="36dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+        app:layout_constraintTop_toBottomOf="@+id/depositImgDp" />
 
     <TextView
-        android:id="@+id/textView16"
+        android:id="@+id/totalTextDp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="35dp"
@@ -41,10 +41,10 @@
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+        app:layout_constraintTop_toBottomOf="@+id/depositTextDp" />
 
     <TextView
-        android:id="@+id/availableBalance"
+        android:id="@+id/dp_available_balance"
         android:layout_width="308dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
@@ -54,10 +54,10 @@
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+        app:layout_constraintTop_toBottomOf="@+id/depositTextDp" />
 
     <TextView
-        android:id="@+id/transferCurrentNetwork"
+        android:id="@+id/dp_transfer_current_network"
         android:layout_width="225dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -68,10 +68,10 @@
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/availableBalance" />
+        app:layout_constraintTop_toBottomOf="@+id/dp_available_balance" />
 
     <TextView
-        android:id="@+id/textView17"
+        android:id="@+id/currentNeworkTextDp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="35dp"
@@ -81,10 +81,10 @@
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+        app:layout_constraintTop_toBottomOf="@+id/totalTextDp" />
 
     <TextView
-        android:id="@+id/textView18"
+        android:id="@+id/addressTextDp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="35dp"
@@ -94,10 +94,10 @@
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView17" />
+        app:layout_constraintTop_toBottomOf="@+id/currentNeworkTextDp" />
 
     <TextView
-        android:id="@+id/walletAddress"
+        android:id="@+id/dp_wallet_address"
         android:layout_width="367dp"
         android:layout_height="117dp"
         android:layout_marginTop="16dp"
@@ -112,20 +112,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.538"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView18"
+        app:layout_constraintTop_toBottomOf="@+id/addressTextDp"
         tools:ignore="TextContrastCheck" />
 
     <ImageButton
-        android:id="@+id/clipboardBtn"
+        android:id="@+id/dp_clipboard_btn"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginTop="84dp"
         android:layout_marginEnd="36dp"
         android:background="#F97428"
         android:contentDescription="clipboard"
-        android:src="@drawable/clipboard_ic"
+        android:src="@drawable/ic_clipboard"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView18" />
+        app:layout_constraintTop_toBottomOf="@+id/addressTextDp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

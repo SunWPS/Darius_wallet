@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="200dp"
     android:orientation="vertical"
-    android:background="@drawable/header_background"
+    android:background="@drawable/bg_header"
     android:gravity="bottom"
     android:padding="20dp">
 
@@ -14,7 +14,7 @@
         android:id="@+id/imageView"
         android:layout_width="196dp"
         android:layout_height="106dp"
-        app:srcCompat="@drawable/logo2"
+        app:srcCompat="@drawable/img_logo2"
         tools:layout_editor_absoluteX="-10dp"
         tools:layout_editor_absoluteY="8dp" />
 

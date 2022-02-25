@@ -25,9 +25,9 @@ public class ForgotPasswordActivity extends AppCompatActivity implements BasicVi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_pass);
 
-        emailToSend = findViewById(R.id.email_to_send);
-        errorEmail = findViewById(R.id.error_email_to_send);
-        sendEmailBtn = findViewById(R.id.emailSendBtn);
+        emailToSend = findViewById(R.id.fp_email_to_send);
+        errorEmail = findViewById(R.id.fp_error_email_to_send);
+        sendEmailBtn = findViewById(R.id.fp_email_send_btn);
 
         forgotPasswordPresenter = new ForgotPasswordPresenter(this);
 

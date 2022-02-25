@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/verifyeamil_screen"
+    android:background="@drawable/screen_verifyeamil"
     tools:context=".ui.signup.VerifyEmailActivity">
 
     <TextView
-        android:id="@+id/emailLabel"
+        android:id="@+id/vf_email_label"
         android:layout_width="360dp"
         android:layout_height="31dp"
         android:layout_marginTop="14dp"
@@ -18,14 +18,14 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/info2Vf" />
 
     <Button
-        android:id="@+id/next_to_username"
+        android:id="@+id/vf_finish_btn"
         android:layout_width="136dp"
         android:layout_height="51dp"
         android:layout_marginBottom="129dp"
-        android:background="@drawable/btn_orange"
+        android:background="@drawable/bg_orange"
         android:fontFamily="@font/roboto_bold"
         android:text="Finish"
         android:textSize="18sp"
@@ -35,7 +35,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/Textview13"
+        android:id="@+id/infoVf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="456dp"
@@ -49,7 +49,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/info2Vf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="14dp"
@@ -60,6 +60,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Textview13" />
+        app:layout_constraintTop_toBottomOf="@+id/infoVf" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
