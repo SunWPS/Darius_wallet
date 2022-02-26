@@ -8,14 +8,18 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.appcompat.widget.Toolbar;
@@ -29,7 +33,8 @@ import com.wallet.darius.ui.password.ResetPasswordActivity;
 import com.wallet.darius.ui.depositAndTransfer.TransferActivity;
 
 import java.math.BigDecimal;
-
+import java.util.ArrayList;
+import java.util.List;
 
 public class DashboardActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DashboardView{
 
@@ -40,9 +45,13 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     private ConstraintLayout trackingView;
     private ImageView refreshTracking;
     private Button depositBtn, transferBtn;
+    private Spinner networkSpinner;
 
     private DashboardPresenter dashboardPresenter;
     private WalletAPI myWallet;
+    private ApplicationInfo ai;
+    private Bundle metaData;
+    private String selectedNetwork, networkLink;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,11 +60,13 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         setContentView(R.layout.activity_dashboard);
 
         try {
-            dashboardPresenter = new DashboardPresenter(this,
-                    getPackageManager().getApplicationInfo(getPackageName(), PackageManager.GET_META_DATA));
+            ai = getPackageManager().getApplicationInfo(getPackageName(), PackageManager.GET_META_DATA);
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
+
+        metaData = ai.metaData;
+        dashboardPresenter = new DashboardPresenter(this, metaData);
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
@@ -64,6 +75,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         transferBtn = findViewById(R.id.db_transfer_btn);
         balance = findViewById(R.id.db_balance_text);
         trackingView = findViewById(R.id.db_tracking_view);
+        networkSpinner = findViewById(R.id.db_network_dropdown);
         usdPrice = trackingView.findViewById(R.id.db_usd_price);
         percentChange1h = trackingView.findViewById(R.id.db_percent_change_1H);
         percentChange24h = trackingView.findViewById(R.id.db_percent_change_24H);
@@ -76,7 +88,40 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         setUpPolicy();
         setUpButton();
         menuSetUp();
+        setUpNetworkSpinner();
+
         dashboardPresenter.getEthTracking();
+
+        setUpTracking();
+    }
+
+    private void setUpNetworkSpinner() {
+        List<String> netWorkList = new ArrayList<>();
+        netWorkList.add("Rinkeby");
+        netWorkList.add("Mainnet");
+        netWorkList.add("Kovan");
+        netWorkList.add("Gorli");
+
+        ArrayAdapter adapter = new ArrayAdapter(this, R.layout.dropdown_selected, netWorkList);
+        adapter.setDropDownViewResource(R.layout.dropdown_items);
+
+        networkSpinner.setAdapter(adapter);
+
+        networkSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                selectedNetwork = networkSpinner.getSelectedItem().toString().toLowerCase();
+                networkLink = metaData.getString(selectedNetwork);
+
+                myWallet.connectToEthNetwork(networkLink);
+                balance.setText(myWallet.retrieveBalance().setScale(4, BigDecimal.ROUND_UP).toPlainString() + " ETH");
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                // pass
+            }
+        });
     }
 
     private void setUpPolicy() {
@@ -88,8 +133,9 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     private void setUpButton() {
         depositBtn.setOnClickListener(view -> {
             Intent intent = new Intent(DashboardActivity.this, DepositActivity.class);
-            intent.putExtra("balance", balance.getText());
+            intent.putExtra("balance", myWallet.retrieveBalance().toPlainString());
             intent.putExtra("address", myWallet.getCredential().getAddress());
+            intent.putExtra("network", selectedNetwork);
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });
@@ -97,6 +143,8 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         transferBtn.setOnClickListener(view -> {
             Intent intent = new Intent(DashboardActivity.this, TransferActivity.class);
             intent.putExtra("wallet", myWallet);
+            intent.putExtra("network", selectedNetwork);
+            intent.putExtra("networkLink", networkLink);
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });
@@ -185,8 +233,10 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     @Override
     public void onResume(){
         super.onResume();
+        Log.i("xx", "start");
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-        balance.setText("" + myWallet.retrieveBalance().setScale(4, BigDecimal.ROUND_UP) + " ETH");
-        setUpTracking();
+        if (myWallet.getWeb3() != null) {
+            balance.setText("" + myWallet.retrieveBalance().setScale(4, BigDecimal.ROUND_UP) + " ETH");
+        }
     }
 }

@@ -16,7 +16,6 @@ import com.wallet.darius.R;
 
 import java.math.BigDecimal;
 
-
 public class TransferActivity extends AppCompatActivity {
 
     private TextView availableBalance, currentNetwork, errorAddress, errorAmount;
@@ -25,6 +24,7 @@ public class TransferActivity extends AppCompatActivity {
 
     private WalletAPI myWallet;
     private Dialog dialog;
+    private String selectedNetwork, networkLink;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +43,13 @@ public class TransferActivity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         myWallet = extras.getParcelable("wallet");
-        availableBalance.setText(myWallet.retrieveBalance() + " ETH");
+        selectedNetwork = extras.getString("network");
+        networkLink = extras.getString("networkLink");
+
+        myWallet.connectToEthNetwork(networkLink);
+
+        availableBalance.setText(myWallet.retrieveBalance().toPlainString() + " ETH");
+        currentNetwork.setText(selectedNetwork.substring(0, 1).toUpperCase() + selectedNetwork.substring(1));
 
 
         letTransferBtn.setOnClickListener(view -> {
@@ -90,7 +96,6 @@ public class TransferActivity extends AppCompatActivity {
             dialog.show();
 
             Thread backgroundThread = new Thread(() -> {
-                Log.i("xx", address);
                 boolean successful = myWallet.makeTransaction(address, amount);
 
                 runOnUiThread(() -> {
@@ -101,6 +106,7 @@ public class TransferActivity extends AppCompatActivity {
                         okBtn.setOnClickListener(view1 -> {
                             dialog.dismiss();
                             clearEditText();
+                            availableBalance.setText(myWallet.retrieveBalance().toPlainString() + " ETH");
                         });
                     } else {
                         dialog.setContentView(R.layout.dailog_failed);

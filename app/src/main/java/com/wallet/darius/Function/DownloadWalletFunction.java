@@ -16,7 +16,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.gson.Gson;
 import com.wallet.darius.API.WalletAPI;
 import com.wallet.darius.model.walletDataModel.WalletData;
-import com.wallet.darius.ui.UniversalView.LoginView;
+import com.wallet.darius.ui.universalView.LoginView;
 
 import java.io.File;
 
@@ -30,22 +30,20 @@ public class DownloadWalletFunction {
     private String password;
     private String walletName;
 
-    public DownloadWalletFunction(LoginView loginView, String filePath, String uri) {
+    public DownloadWalletFunction(LoginView loginView, String filePath) {
         this.loginView = loginView;
         this.user = FirebaseAuth.getInstance().getCurrentUser();
         this.filePath = filePath;
-        this.wallet = new WalletAPI(filePath, uri);
+        this.wallet = new WalletAPI(filePath);
         this.gson = new Gson();
         this.password = "";
         walletName = "";
     }
 
-
     public void load() {
         user = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference dbRef = FirebaseDatabase.getInstance()
                 .getReference("data/" + user.getUid());
-
 
         dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

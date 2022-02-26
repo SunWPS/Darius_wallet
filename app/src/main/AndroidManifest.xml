@@ -64,8 +64,21 @@
             android:name="cmcURI"
             android:value="${cmcURI}" />
         <meta-data
-            android:name="infuraURI"
-            android:value="${infuraURI}" />
+            android:name="rinkeby"
+            android:value="${rinkeby}" />
+        <meta-data
+            android:name="mainnet"
+            android:value="${mainnet}" />
+        <meta-data
+            android:name="ropsten"
+            android:value="${ropsten}" />
+        <meta-data
+            android:name="kovan"
+            android:value="${kovan}" />
+        <meta-data
+            android:name="gorli"
+            android:value="${gorli}" />
+
     </application>
 
 </manifest>

@@ -2,7 +2,7 @@ package com.wallet.darius.ui.login;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.wallet.darius.Function.DownloadWalletFunction;
-import com.wallet.darius.ui.UniversalView.LoginView;
+import com.wallet.darius.ui.universalView.LoginView;
 
 public class LoginPresenter {
 

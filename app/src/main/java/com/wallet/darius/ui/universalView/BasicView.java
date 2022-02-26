@@ -1,4 +1,4 @@
-package com.wallet.darius.ui.UniversalView;
+package com.wallet.darius.ui.universalView;
 
 public interface BasicView {
     void onSuccess();

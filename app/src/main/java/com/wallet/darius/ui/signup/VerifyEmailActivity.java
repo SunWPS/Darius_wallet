@@ -3,7 +3,6 @@ package com.wallet.darius.ui.signup;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -11,7 +10,7 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.wallet.darius.API.WalletAPI;
-import com.wallet.darius.ui.UniversalView.BasicView;
+import com.wallet.darius.ui.universalView.BasicView;
 import com.wallet.darius.R;
 import com.wallet.darius.ui.dashboard.DashboardActivity;
 
@@ -30,12 +29,7 @@ public class VerifyEmailActivity extends AppCompatActivity implements BasicView 
         emailLabel = findViewById(R.id.vf_email_label);
         nextToUsername = findViewById(R.id.vf_finish_btn);
 
-        try {
-            verifyEmailPresenter = new VerifyEmailPresenter(this,
-                    getPackageManager().getApplicationInfo(getPackageName(), PackageManager.GET_META_DATA));
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-        }
+        verifyEmailPresenter = new VerifyEmailPresenter(this);
 
         emailLabel.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
 

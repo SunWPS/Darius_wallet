@@ -34,7 +34,6 @@ import java.security.Security;
 
 public class WalletAPI implements Parcelable {
 
-    private HttpService link;
     private Web3j web3;
     private File file;
     private Credentials credential;
@@ -42,37 +41,31 @@ public class WalletAPI implements Parcelable {
     private String filePath;
     private String password;
     private String walletName;
-    private String uri;
 
-    public WalletAPI(String filePath, String password, String uri) {
+    // for create new Wallet
+    public WalletAPI(String filePath, String password) {
         this.filePath = filePath;
         this.password = password;
-        this.walletName = "";
-        this.uri = uri;
         setUp();
         setupBouncyCastle();
         checkDIR();
-        connectToEthNetwork();
     }
 
-    public WalletAPI(String filePath, String uri) {
+    // for DownloadWalletFunction (Main and Login)
+    public WalletAPI(String filePath) {
         this.filePath = filePath;
         this.password = "";
-        this.walletName = "";
-        this.uri = uri;
         setUp();
         setupBouncyCastle();
         checkDIR();
-        connectToEthNetwork();
     }
 
+    // between view
     protected WalletAPI(Parcel in) {
         filePath = in.readString();
         password = in.readString();
         walletName = in.readString();
-        uri = in.readString();
         setUp();
-        connectToEthNetwork();
         loadWallet();
     }
 
@@ -160,8 +153,8 @@ public class WalletAPI implements Parcelable {
         }
     }
 
-    // TODO: change network by change link of api and pass network to the parameter of function
-    public void connectToEthNetwork() {
+    public void connectToEthNetwork(String uri) {
+        HttpService link = new HttpService(uri);
         web3 = Web3j.build(link);
 
         try {
@@ -176,21 +169,7 @@ public class WalletAPI implements Parcelable {
         }
     }
 
-    public Credentials getCredential() {
-        return credential;
-    }
-
-    public String getWalletName() {
-        return walletName;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     private void setUp() {
-        this.link = new HttpService(uri);
-        this.web3 = Web3j.build(link);
         this.file = new File(filePath);
         this.credential = null;
     }
@@ -216,6 +195,18 @@ public class WalletAPI implements Parcelable {
         file.mkdir();
     }
 
+    public Credentials getCredential() {
+        return credential;
+    }
+
+    public String getWalletName() {
+        return walletName;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -226,7 +217,10 @@ public class WalletAPI implements Parcelable {
         parcel.writeString(filePath);
         parcel.writeString(password);
         parcel.writeString(walletName);
-        parcel.writeString(uri);
+//        parcel.writeString(uri);
     }
 
+    public Web3j getWeb3() {
+        return web3;
+    }
 }

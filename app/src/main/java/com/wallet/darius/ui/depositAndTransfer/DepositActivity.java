@@ -32,6 +32,9 @@ public class DepositActivity extends AppCompatActivity {
         totalBalance.setText(bundle.getString("balance"));
         address.setText(bundle.getString("address"));
 
+        String network = bundle.getString("network");
+        currentNetwork.setText(network.substring(0, 1).toUpperCase() + network.substring(1));
+
         setUpClipboard();
 
     }

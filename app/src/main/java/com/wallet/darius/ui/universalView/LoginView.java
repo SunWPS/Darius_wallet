@@ -1,4 +1,4 @@
-package com.wallet.darius.ui.UniversalView;
+package com.wallet.darius.ui.universalView;
 
 import com.wallet.darius.API.WalletAPI;
 

@@ -17,7 +17,7 @@
         android:background="@color/white"
         android:backgroundTint="#282136"
         android:visibility="gone"
-        app:headerLayout="@layout/header"
+        app:headerLayout="@layout/menu_header"
         app:itemTextColor="@color/white"
         app:menu="@menu/main_menu" />
 
@@ -136,12 +136,12 @@
             android:id="@+id/db_my_balance_view"
             android:layout_width="383dp"
             android:layout_height="200dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="12dp"
             android:background="@drawable/bg_orange_yellow"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.51"
+            app:layout_constraintHorizontal_bias="0.489"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tool_bar">
+            app:layout_constraintTop_toBottomOf="@+id/db_network_dropdown">
 
             <ImageView
                 android:id="@+id/balanceEthImgDb"
@@ -164,6 +164,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/balanceEthImgDb" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <Button
@@ -212,6 +213,16 @@
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/db_deposit_btn" />
+
+        <Spinner
+            android:id="@+id/db_network_dropdown"
+            android:layout_width="146dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_spinner"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tool_bar" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.drawerlayout.widget.DrawerLayout>

@@ -12,7 +12,7 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 import com.wallet.darius.ui.login.LoginActivity;
 import com.wallet.darius.R;
-import com.wallet.darius.ui.UniversalView.BasicView;
+import com.wallet.darius.ui.universalView.BasicView;
 
 public class ResetPasswordActivity extends AppCompatActivity implements BasicView {
 

@@ -3,8 +3,6 @@ package com.wallet.darius.ui.login;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
@@ -15,7 +13,7 @@ import android.widget.Toast;
 
 import com.wallet.darius.API.WalletAPI;
 import com.wallet.darius.Function.DownloadWalletFunction;
-import com.wallet.darius.ui.UniversalView.LoginView;
+import com.wallet.darius.ui.universalView.LoginView;
 import com.wallet.darius.ui.dashboard.DashboardActivity;
 import com.wallet.darius.R;
 import com.wallet.darius.ui.password.ForgotPasswordActivity;
@@ -44,17 +42,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         forgotPass = findViewById(R.id.log_fg_pass);
         loginBtn = findViewById(R.id.log_login_btn);
 
-        try {
-            ApplicationInfo ai = getPackageManager().getApplicationInfo(getPackageName(), PackageManager.GET_META_DATA);
-            Bundle metaData = ai.metaData;
-
-            downloadWalletFunction = new DownloadWalletFunction(this,
-                    getFilesDir().toString(),
-                    metaData.getString("infuraURI"));
-
-        } catch (Exception e) {
-            e.getMessage();
-        }
+        downloadWalletFunction = new DownloadWalletFunction(this,
+                getFilesDir().toString());
 
         loginPresenter = new LoginPresenter(this, downloadWalletFunction);
 

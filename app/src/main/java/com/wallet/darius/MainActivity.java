@@ -3,8 +3,6 @@ package com.wallet.darius;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -12,7 +10,7 @@ import android.util.Log;
 import com.google.firebase.auth.FirebaseAuth;
 import com.wallet.darius.API.WalletAPI;
 import com.wallet.darius.Function.DownloadWalletFunction;
-import com.wallet.darius.ui.UniversalView.LoginView;
+import com.wallet.darius.ui.universalView.LoginView;
 import com.wallet.darius.ui.dashboard.DashboardActivity;
 import com.wallet.darius.ui.login.LoginActivity;
 
@@ -25,19 +23,8 @@ public class MainActivity extends AppCompatActivity implements LoginView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        try {
-            ApplicationInfo ai = getPackageManager().getApplicationInfo(getPackageName(), PackageManager.GET_META_DATA);
-            Bundle metaData = ai.metaData;
-
-            downloadWalletFunction = new DownloadWalletFunction(this,
-                    getFilesDir().toString(),
-                    metaData.getString("infuraURI"));
-
-        } catch (Exception e) {
-            e.getMessage();
-        }
-
-
+        downloadWalletFunction = new DownloadWalletFunction(this,
+                getFilesDir().toString());
 
 
         Handler handler = new Handler();

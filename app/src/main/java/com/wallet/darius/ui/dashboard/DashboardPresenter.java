@@ -1,6 +1,5 @@
 package com.wallet.darius.ui.dashboard;
 
-import android.content.pm.ApplicationInfo;
 import android.os.Bundle;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -15,14 +14,13 @@ public class DashboardPresenter {
     private FirebaseAuth auth;
     private CoinInfoAPI coinInfoAPi;
 
-    public DashboardPresenter(DashboardView dashboardView, ApplicationInfo ai) {
+    public DashboardPresenter(DashboardView dashboardView, Bundle metaData) {
         this.dashboardView = dashboardView;
         this.auth = FirebaseAuth.getInstance();
 
-        Bundle bundle = ai.metaData;
         coinInfoAPi = new CoinInfoAPI(this,
-                bundle.getString("cmcAPIkey"),
-                bundle.getString("cmcURI"));
+                metaData.getString("cmcAPIkey"),
+                metaData.getString("cmcURI"));
     }
 
     public String getUserEmail() {
@@ -47,4 +45,5 @@ public class DashboardPresenter {
         Double changeIn24H = priceInfo.getPercent_change_24h();
         dashboardView.setTextToTracking(price, changeIn1H, changeIn24H, changeIn7D);
     }
+
 }
