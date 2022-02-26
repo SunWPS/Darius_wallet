@@ -6,7 +6,6 @@ import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -92,7 +91,7 @@ public class TransferActivity extends AppCompatActivity {
 
         yesBtn.setOnClickListener(view -> {
 
-            dialog.setContentView(R.layout.dialog_processing);
+            dialog.setContentView(R.layout.dialog_pending);
             dialog.show();
 
             Thread backgroundThread = new Thread(() -> {

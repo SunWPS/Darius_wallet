@@ -165,6 +165,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/balanceEthImgDb" />
 
+            <ImageView
+                android:id="@+id/db_refresh_balance"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:srcCompat="@drawable/ic_refresh" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <Button

@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
                 android:fontFamily="@font/roboto_bold"
-                android:text="Processing ..."
+                android:text="Pending ..."
                 android:textColor="#180A30"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"

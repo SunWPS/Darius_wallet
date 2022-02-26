@@ -43,7 +43,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     private Toolbar toolBar;
     private TextView menuEmail, usdPrice, percentChange1h, percentChange24h, percentChange7d, balance;
     private ConstraintLayout trackingView;
-    private ImageView refreshTracking;
+    private ImageView refreshTracking, refreshBalance;
     private Button depositBtn, transferBtn;
     private Spinner networkSpinner;
 
@@ -74,6 +74,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         depositBtn = findViewById(R.id.db_deposit_btn);
         transferBtn = findViewById(R.id.db_transfer_btn);
         balance = findViewById(R.id.db_balance_text);
+        refreshBalance = findViewById(R.id.db_refresh_balance);
         trackingView = findViewById(R.id.db_tracking_view);
         networkSpinner = findViewById(R.id.db_network_dropdown);
         usdPrice = trackingView.findViewById(R.id.db_usd_price);
@@ -147,6 +148,10 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
             intent.putExtra("networkLink", networkLink);
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        });
+
+        refreshBalance.setOnClickListener(view -> {
+            balance.setText("" + myWallet.retrieveBalance().setScale(4, BigDecimal.ROUND_UP) + " ETH");
         });
     }
 
