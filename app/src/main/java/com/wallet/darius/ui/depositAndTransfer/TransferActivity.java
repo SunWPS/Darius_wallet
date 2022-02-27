@@ -23,7 +23,7 @@ public class TransferActivity extends AppCompatActivity {
 
     private WalletAPI myWallet;
     private Dialog dialog;
-    private String selectedNetwork, networkLink;
+    private String selectedNetwork, networkLink, favAddress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +44,15 @@ public class TransferActivity extends AppCompatActivity {
         myWallet = extras.getParcelable("wallet");
         selectedNetwork = extras.getString("network");
         networkLink = extras.getString("networkLink");
+        favAddress = extras.getString("address");
 
         myWallet.connectToEthNetwork(networkLink);
 
         availableBalance.setText(myWallet.retrieveBalance().toPlainString() + " ETH");
         currentNetwork.setText(selectedNetwork.substring(0, 1).toUpperCase() + selectedNetwork.substring(1));
+        if (favAddress != null) {
+            receiverAddress.setText(favAddress);
+        }
 
 
         letTransferBtn.setOnClickListener(view -> {

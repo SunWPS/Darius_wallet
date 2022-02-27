@@ -28,6 +28,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.wallet.darius.API.WalletAPI;
 import com.wallet.darius.R;
 import com.wallet.darius.ui.depositAndTransfer.DepositActivity;
+import com.wallet.darius.ui.favorite.FavoriteActivity;
 import com.wallet.darius.ui.login.LoginActivity;
 import com.wallet.darius.ui.password.ResetPasswordActivity;
 import com.wallet.darius.ui.depositAndTransfer.TransferActivity;
@@ -44,7 +45,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     private TextView menuEmail, usdPrice, percentChange1h, percentChange24h, percentChange7d, balance;
     private ConstraintLayout trackingView;
     private ImageView refreshTracking, refreshBalance;
-    private Button depositBtn, transferBtn;
+    private Button depositBtn, transferBtn, favoriteBtn;
     private Spinner networkSpinner;
 
     private DashboardPresenter dashboardPresenter;
@@ -73,6 +74,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         toolBar = findViewById(R.id.tool_bar);
         depositBtn = findViewById(R.id.db_deposit_btn);
         transferBtn = findViewById(R.id.db_transfer_btn);
+        favoriteBtn = findViewById(R.id.db_favorite_btn);
         balance = findViewById(R.id.db_balance_text);
         refreshBalance = findViewById(R.id.db_refresh_balance);
         trackingView = findViewById(R.id.db_tracking_view);
@@ -132,6 +134,10 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     }
 
     private void setUpButton() {
+        refreshBalance.setOnClickListener(view -> {
+            balance.setText("" + myWallet.retrieveBalance().setScale(4, BigDecimal.ROUND_UP) + " ETH");
+        });
+
         depositBtn.setOnClickListener(view -> {
             Intent intent = new Intent(DashboardActivity.this, DepositActivity.class);
             intent.putExtra("balance", myWallet.retrieveBalance().toPlainString());
@@ -150,8 +156,13 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });
 
-        refreshBalance.setOnClickListener(view -> {
-            balance.setText("" + myWallet.retrieveBalance().setScale(4, BigDecimal.ROUND_UP) + " ETH");
+        favoriteBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(DashboardActivity.this, FavoriteActivity.class);
+            intent.putExtra("wallet", myWallet);
+            intent.putExtra("network", selectedNetwork);
+            intent.putExtra("networkLink", networkLink);
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });
     }
 

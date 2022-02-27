@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Darius">
         <activity
+            android:name=".ui.favorite.FavoriteActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.depositAndTransfer.TransferActivity"
             android:exported="false" />
         <activity
@@ -78,7 +81,6 @@
         <meta-data
             android:name="gorli"
             android:value="${gorli}" />
-
     </application>
 
 </manifest>
