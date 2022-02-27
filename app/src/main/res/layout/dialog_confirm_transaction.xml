@@ -77,57 +77,107 @@
                 android:id="@+id/textView20"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
                 android:fontFamily="@font/roboto_bold"
                 android:text="To:"
                 android:textColor="#180A30"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.062"
+                android:textSize="15sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView6" />
 
             <TextView
-                android:id="@+id/textView22"
+                android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
                 android:fontFamily="@font/roboto_bold"
-                android:text="Amount:"
+                android:text="Network:"
                 android:textColor="#180A30"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.072"
+                android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/confirmReceiverAddress" />
 
             <TextView
-                android:id="@+id/confirmReceiverAddress"
-                android:layout_width="305dp"
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
                 android:fontFamily="@font/roboto_bold"
-                android:text="0x0f5b905F15CBc3F82277a7761f0B966057A84324"
+                android:text="Fee:"
+                android:textColor="#180A30"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+            <TextView
+                android:id="@+id/confirmReceiverAddress"
+                android:layout_width="213dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="112dp"
+                android:fontFamily="@font/roboto_bold"
                 android:textColor="#451694"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.512"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
             <TextView
                 android:id="@+id/confirmAmountText"
-                android:layout_width="305dp"
+                android:layout_width="234dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
                 android:fontFamily="@font/roboto_bold"
-                android:text="0.00014 ETH"
-                android:textColor="#451694"
-                android:textSize="18sp"
+                android:gravity="right"
+                android:textColor="#00BCD4"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.512"
+                app:layout_constraintTop_toBottomOf="@+id/confirmFee" />
+
+            <TextView
+                android:id="@+id/confirmNetwork"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="right"
+                android:textColor="#451694"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/confirmReceiverAddress" />
+
+            <TextView
+                android:id="@+id/confirmFee"
+                android:layout_width="228dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="right"
+                android:textColor="#451694"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/confirmNetwork" />
+
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Amount:"
+                android:textColor="#180A30"
+                android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView22" />
+                app:layout_constraintTop_toBottomOf="@+id/textView3" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>

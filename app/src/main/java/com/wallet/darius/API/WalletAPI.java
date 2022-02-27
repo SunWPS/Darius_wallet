@@ -26,6 +26,7 @@ import org.web3j.tx.Transfer;
 import org.web3j.utils.Convert;
 
 import java.io.File;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.math.RoundingMode;
@@ -167,6 +168,21 @@ public class WalletAPI implements Parcelable {
         } catch (Exception e) {
             Log.i("xx", e.getMessage());
         }
+    }
+
+    public BigDecimal getFee() {
+        try {
+            BigInteger gasPrice = web3.ethGasPrice().send().getGasPrice();
+
+            BigDecimal fee = new BigDecimal(String.valueOf(gasPrice.multiply(new BigInteger(Transfer.GAS_LIMIT.toString()))))
+                    .divide(new BigDecimal("1000000000000000000"))
+                    .setScale(9, RoundingMode.CEILING);
+
+            return fee;
+        } catch (IOException e) {
+            Log.i("xx", e.getMessage());
+        }
+        return new BigDecimal("0");
     }
 
     private void setUp() {

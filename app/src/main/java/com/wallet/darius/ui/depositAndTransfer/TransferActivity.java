@@ -80,9 +80,13 @@ public class TransferActivity extends AppCompatActivity {
         Button noBtn = dialog.findViewById(R.id.noConfirmBtn);
         Button yesBtn = dialog.findViewById(R.id.yesConfirmBtn);
         TextView confirmReceiverAddress = dialog.findViewById(R.id.confirmReceiverAddress);
+        TextView confirmNetwork = dialog.findViewById(R.id.confirmNetwork);
+        TextView confirmFee = dialog.findViewById(R.id.confirmFee);
         TextView confirmAmountText = dialog.findViewById(R.id.confirmAmountText);
 
         confirmReceiverAddress.setText(address);
+        confirmNetwork.setText(selectedNetwork.substring(0, 1).toUpperCase() + selectedNetwork.substring(1));
+        confirmFee.setText(myWallet.getFee().toPlainString() + " ETH");
         confirmAmountText.setText(amount + " ETH");
 
         noBtn.setOnClickListener(view -> {
