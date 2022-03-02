@@ -2,7 +2,6 @@ package com.wallet.darius.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.wallet.darius.API.WalletAPI;
 import com.wallet.darius.R;
-import com.wallet.darius.model.favorite.FavoriteCard;
-import com.wallet.darius.ui.dashboard.DashboardActivity;
+import com.wallet.darius.model.itemCard.FavoriteCard;
 import com.wallet.darius.ui.depositAndTransfer.TransferActivity;
 
 import java.util.ArrayList;
@@ -22,7 +20,7 @@ import java.util.ArrayList;
 public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.FavoriteHolder> {
 
     private Context context;
-    private ArrayList<FavoriteCard>  favoriteList;
+    private ArrayList<FavoriteCard> favoriteList;
     private WalletAPI wallet;
     private String network;
     private String networkLink;

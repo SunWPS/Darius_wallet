@@ -1,4 +1,4 @@
-package com.wallet.darius.model.favorite;
+package com.wallet.darius.model.itemCard;
 
 public class FavoriteCard {
 

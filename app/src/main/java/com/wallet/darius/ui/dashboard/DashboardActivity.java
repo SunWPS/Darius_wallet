@@ -29,6 +29,7 @@ import com.wallet.darius.API.WalletAPI;
 import com.wallet.darius.R;
 import com.wallet.darius.ui.depositAndTransfer.DepositActivity;
 import com.wallet.darius.ui.favorite.FavoriteActivity;
+import com.wallet.darius.ui.history.HistoryActivity;
 import com.wallet.darius.ui.login.LoginActivity;
 import com.wallet.darius.ui.password.ResetPasswordActivity;
 import com.wallet.darius.ui.depositAndTransfer.TransferActivity;
@@ -37,15 +38,18 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import jnr.ffi.annotations.In;
+
 public class DashboardActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DashboardView{
 
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private Toolbar toolBar;
-    private TextView menuEmail, usdPrice, percentChange1h, percentChange24h, percentChange7d, balance;
+    private TextView menuEmail, usdPrice, percentChange1h, percentChange24h,
+            percentChange7d, balance;
     private ConstraintLayout trackingView;
     private ImageView refreshTracking, refreshBalance;
-    private Button depositBtn, transferBtn, favoriteBtn;
+    private Button depositBtn, transferBtn, favoriteBtn, historyBtn;
     private Spinner networkSpinner;
 
     private DashboardPresenter dashboardPresenter;
@@ -75,6 +79,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         depositBtn = findViewById(R.id.db_deposit_btn);
         transferBtn = findViewById(R.id.db_transfer_btn);
         favoriteBtn = findViewById(R.id.db_favorite_btn);
+        historyBtn = findViewById(R.id.db_history_btn);
         balance = findViewById(R.id.db_balance_text);
         refreshBalance = findViewById(R.id.db_refresh_balance);
         trackingView = findViewById(R.id.db_tracking_view);
@@ -164,6 +169,13 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });
+
+        historyBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(DashboardActivity.this, HistoryActivity.class);
+            intent.putExtra("myAddress", myWallet.getCredential().getAddress());
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        });
     }
 
     private void setUpTracking() {
@@ -244,6 +256,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
         percentChange7d.setText((changeIn7D > 0 ? "+": "") + String.format("%.2f", changeIn7D) + "%");
         percentChange7d.setTextColor(changeIn7D >= 0 ? green: red);
+
     }
 
     @Override

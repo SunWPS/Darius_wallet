@@ -1,6 +1,6 @@
 package com.wallet.darius.Function;
 
-import com.wallet.darius.model.favorite.FavoriteCard;
+import com.wallet.darius.model.itemCard.FavoriteCard;
 
 import java.util.Comparator;
 

@@ -145,8 +145,8 @@
 
             <ImageView
                 android:id="@+id/balanceEthImgDb"
-                android:layout_width="195dp"
-                android:layout_height="63dp"
+                android:layout_width="187dp"
+                android:layout_height="61dp"
                 android:layout_marginTop="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -157,11 +157,13 @@
                 android:id="@+id/db_balance_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="4dp"
                 android:fontFamily="@font/roboto_bold"
+                android:text="0.000001"
                 android:textColor="#FFFFFF"
                 android:textSize="36sp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/balanceEthImgDb" />
 
@@ -248,6 +250,23 @@
             android:textColor="#FFFFFF"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/db_tracking_view" />
+
+        <Button
+            android:id="@+id/db_history_btn"
+            android:layout_width="184dp"
+            android:layout_height="91dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="36dp"
+            android:background="@drawable/bg_blue_pink"
+            android:drawableTop="@drawable/ic_history"
+            android:fontFamily="@font/roboto_medium"
+            android:paddingTop="15dp"
+            android:paddingBottom="10dp"
+            android:text="History"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/db_tracking_view" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

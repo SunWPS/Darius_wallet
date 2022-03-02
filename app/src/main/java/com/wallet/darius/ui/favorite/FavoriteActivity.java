@@ -9,7 +9,6 @@ import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -27,11 +26,9 @@ import com.wallet.darius.API.WalletAPI;
 import com.wallet.darius.Adapter.FavoriteAdapter;
 import com.wallet.darius.Function.FavoriteNameComparator;
 import com.wallet.darius.R;
-import com.wallet.darius.model.favorite.FavoriteCard;
-import com.wallet.darius.model.walletDataModel.WalletData;
+import com.wallet.darius.model.itemCard.FavoriteCard;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.UUID;
 

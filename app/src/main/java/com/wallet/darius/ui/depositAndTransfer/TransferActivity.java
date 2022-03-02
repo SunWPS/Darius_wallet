@@ -54,7 +54,6 @@ public class TransferActivity extends AppCompatActivity {
             receiverAddress.setText(favAddress);
         }
 
-
         letTransferBtn.setOnClickListener(view -> {
             clearError();
 
@@ -78,6 +77,7 @@ public class TransferActivity extends AppCompatActivity {
     }
 
     private void confirmDialog(String address, BigDecimal amount) {
+        dialog.setCancelable(false);
         dialog.setContentView(R.layout.dialog_confirm_transaction);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 

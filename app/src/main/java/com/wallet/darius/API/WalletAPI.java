@@ -11,6 +11,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.wallet.darius.model.itemCard.HistoryCard;
 import com.wallet.darius.model.walletDataModel.WalletData;
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
@@ -32,6 +33,9 @@ import java.math.BigInteger;
 import java.math.RoundingMode;
 import java.security.Provider;
 import java.security.Security;
+import java.sql.Timestamp;
+import java.util.Date;
+import java.util.UUID;
 
 public class WalletAPI implements Parcelable {
 
@@ -145,8 +149,18 @@ public class WalletAPI implements Parcelable {
 
     public boolean makeTransaction(String toAddress, BigDecimal amount) {
         try {
+            long timestamp = System.currentTimeMillis();
             TransactionReceipt receipt = Transfer.sendFunds(web3, credential, toAddress, amount, Convert.Unit.ETHER).send();
-            Log.i("xx", receipt.toString());
+
+            HistoryCard historyCard = new HistoryCard(toAddress, amount.toPlainString(), getFee().toPlainString(),
+                    receipt.getTransactionHash(), timestamp);
+
+            DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("history");
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+            myRef.child(user.getUid() + "/" + UUID.randomUUID().toString().replace("-", ""))
+                    .setValue(historyCard);
+
             return true;
         } catch (Exception e) {
             Log.i("xx", e.getMessage());
