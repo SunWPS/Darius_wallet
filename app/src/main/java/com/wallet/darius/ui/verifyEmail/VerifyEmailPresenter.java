@@ -1,4 +1,4 @@
-package com.wallet.darius.ui.signup;
+package com.wallet.darius.ui.verifyEmail;
 
 import com.google.common.hash.Hashing;
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,6 +31,11 @@ public class VerifyEmailPresenter {
         WalletAPI wallet = new WalletAPI(filePath, encryptPass);
         wallet.createWallet();
         return wallet;
+    }
+
+    public boolean checkVerify() {
+        user.reload();
+        return user.isEmailVerified();
     }
 
 }

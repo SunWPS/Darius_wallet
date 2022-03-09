@@ -8,11 +8,16 @@ import android.os.Handler;
 import android.util.Log;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.internal.InternalTokenProvider;
+import com.kenai.jffi.Main;
 import com.wallet.darius.API.WalletAPI;
 import com.wallet.darius.Function.DownloadWalletFunction;
+import com.wallet.darius.ui.pin.LoginPinActivity;
 import com.wallet.darius.ui.universalView.LoginView;
 import com.wallet.darius.ui.dashboard.DashboardActivity;
 import com.wallet.darius.ui.login.LoginActivity;
+
+import jnr.ffi.annotations.In;
 
 public class MainActivity extends AppCompatActivity implements LoginView {
 
@@ -42,12 +47,9 @@ public class MainActivity extends AppCompatActivity implements LoginView {
     }
 
     @Override
-    public void goToDashBoard(WalletAPI wallet) {
-
-        Log.i("xx", "MainActivity " + wallet.getCredential().getAddress());
-        Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
+    public void goToNextPage(WalletAPI wallet) {
+        Intent intent = new Intent(MainActivity.this, LoginPinActivity.class);
         intent.putExtra("wallet", wallet);
-
         startActivity(intent);
         finish();
     }

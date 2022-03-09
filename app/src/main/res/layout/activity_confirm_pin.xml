@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/screen_normal_4"
+    tools:context=".ui.pin.CreatePinActivity">
+
+    <com.chaos.view.PinView
+        android:id="@+id/confirm_pin"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:layout_marginTop="180dp"
+        android:elevation="10dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:inputType="numberPassword"
+        android:itemBackground="@color/white"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:itemHeight="80dp"
+        app:itemRadius="20dp"
+        app:itemSpacing="10dp"
+        app:itemWidth="80dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9"
+        app:lineColor="#896C27" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="123dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="Confirm Pin"
+        android:textColor="#FFFFFF"
+        android:textSize="45sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/pin_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="133dp"
+        android:fontFamily="@font/roboto_bold"
+        android:gravity="center"
+        android:textColor="@color/red"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

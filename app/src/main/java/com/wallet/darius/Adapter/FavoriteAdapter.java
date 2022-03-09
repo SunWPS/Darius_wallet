@@ -10,12 +10,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.wallet.darius.API.WalletAPI;
 import com.wallet.darius.R;
 import com.wallet.darius.model.itemCard.FavoriteCard;
 import com.wallet.darius.ui.depositAndTransfer.TransferActivity;
+import com.wallet.darius.ui.verifyEmail.VerifyEmailBfTxnActivity;
 
 import java.util.ArrayList;
+
+import jnr.ffi.annotations.In;
 
 public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.FavoriteHolder> {
 
@@ -61,7 +65,13 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
             fvAddress = view.findViewById(R.id.fv_address);
 
             view.setOnClickListener(view1 -> {
-                Intent intent = new Intent(context.getApplicationContext(), TransferActivity.class);
+                Intent intent;
+                if (FirebaseAuth.getInstance().getCurrentUser().isEmailVerified()) {
+                    intent = new Intent(context.getApplicationContext(), TransferActivity.class);
+                } else {
+                    intent = new Intent(context.getApplicationContext(), VerifyEmailBfTxnActivity.class);
+                    intent.putExtra("nextPage", "tf");
+                }
                 intent.putExtra("wallet", wallet);
                 intent.putExtra("network", network);
                 intent.putExtra("networkLink", networkLink);

@@ -14,6 +14,7 @@ import com.wallet.darius.API.WalletAPI;
 import com.wallet.darius.R;
 
 import java.math.BigDecimal;
+import java.util.Locale;
 
 public class TransferActivity extends AppCompatActivity {
 
@@ -72,6 +73,11 @@ public class TransferActivity extends AppCompatActivity {
                 return;
             }
 
+            if (myWallet.retrieveBalance().compareTo(amount) < 0) {
+                errorAmount.setText("You balance is not enough");
+                return;
+            }
+
             confirmDialog(receiverAddress.getText().toString(), amount);
         });
     }
@@ -103,7 +109,7 @@ public class TransferActivity extends AppCompatActivity {
             dialog.show();
 
             Thread backgroundThread = new Thread(() -> {
-                boolean successful = myWallet.makeTransaction(address, amount);
+                boolean successful = myWallet.makeTransaction(address, amount, selectedNetwork.toLowerCase());
 
                 runOnUiThread(() -> {
                     if (successful) {

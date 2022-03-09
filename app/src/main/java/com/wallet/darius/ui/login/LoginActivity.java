@@ -95,7 +95,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     }
 
     @Override
-    public void goToDashBoard(WalletAPI wallet) {
+    public void goToNextPage(WalletAPI wallet) {
         Log.i("xx", "LoginActivity " + wallet.getCredential().getAddress());
         Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
         intent.putExtra("wallet", wallet);

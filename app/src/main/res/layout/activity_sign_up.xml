@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/screen_signup"
+    android:background="@drawable/screen_normal_4"
     tools:context=".ui.signup.SignUpActivity">
 
     <TextView
@@ -105,13 +105,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="328dp"
+        android:layout_marginTop="27dp"
         android:fontFamily="@font/roboto_medium"
         android:text="@string/email"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView11" />
 
     <TextView
         android:id="@+id/su_error_email"
@@ -151,5 +151,16 @@
         android:textSize="10sp"
         app:layout_constraintBottom_toTopOf="@+id/su_confirm_password"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/img_sign_up" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

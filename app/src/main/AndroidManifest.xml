@@ -14,6 +14,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Darius">
         <activity
+            android:name=".ui.pin.LoginPinActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".ui.pin.ConfirmPinActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.pin.CreatePinActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.changeEmail.ChangeEmailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.verifyEmail.VerifyEmailBfTxnActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.history.HistoryActivity"
             android:exported="false" />
         <activity
@@ -34,7 +52,7 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.signup.VerifyEmailActivity"
+            android:name=".ui.verifyEmail.VerifyEmailActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity

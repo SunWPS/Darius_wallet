@@ -24,6 +24,7 @@ public class DashboardPresenter {
     }
 
     public String getUserEmail() {
+        auth.getCurrentUser().reload();
         return auth.getCurrentUser().getEmail();
     }
 
@@ -44,6 +45,10 @@ public class DashboardPresenter {
 
         Double changeIn24H = priceInfo.getPercent_change_24h();
         dashboardView.setTextToTracking(price, changeIn1H, changeIn24H, changeIn7D);
+    }
+
+    public boolean checkVerify() {
+        return auth.getCurrentUser().isEmailVerified();
     }
 
 }

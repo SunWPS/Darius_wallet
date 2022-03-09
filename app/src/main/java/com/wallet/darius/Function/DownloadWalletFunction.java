@@ -59,7 +59,7 @@ public class DownloadWalletFunction {
                     downloadCredential();
                 } else {
                     walletSetup();
-                    loginView.goToDashBoard(wallet);
+                    loginView.goToNextPage(wallet);
                 }
             }
 
@@ -78,7 +78,7 @@ public class DownloadWalletFunction {
         stRf.getFile(localFile)
                 .addOnSuccessListener(taskSnapshot -> {
                     walletSetup();
-                    loginView.goToDashBoard(wallet);
+                    loginView.goToNextPage(wallet);
                 })
                 .addOnFailureListener(e -> Log.i("xx", e.getMessage()));
     }

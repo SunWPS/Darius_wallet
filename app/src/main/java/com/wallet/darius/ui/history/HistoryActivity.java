@@ -33,7 +33,7 @@ public class HistoryActivity extends AppCompatActivity {
     private FirebaseUser user;
     private DatabaseReference myRef;
     private Gson gson;
-    private String myAddress;
+    private String myAddress, network;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,12 +50,13 @@ public class HistoryActivity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         myAddress = extras.getString("myAddress");
+        network = extras.getString("network");
 
         showHistoryCard();
     }
 
     private void showHistoryCard() {
-        myRef.child(user.getUid()).addValueEventListener(new ValueEventListener() {
+        myRef.child(user.getUid() + "/" + network).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 ArrayList<HistoryCard> historyCards = new ArrayList<>();

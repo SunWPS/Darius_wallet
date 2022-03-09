@@ -7,6 +7,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
@@ -15,6 +16,7 @@ import android.os.StrictMode;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -27,6 +29,8 @@ import androidx.appcompat.widget.Toolbar;
 import com.google.android.material.navigation.NavigationView;
 import com.wallet.darius.API.WalletAPI;
 import com.wallet.darius.R;
+import com.wallet.darius.ui.changeEmail.ChangeEmailActivity;
+import com.wallet.darius.ui.verifyEmail.VerifyEmailBfTxnActivity;
 import com.wallet.darius.ui.depositAndTransfer.DepositActivity;
 import com.wallet.darius.ui.favorite.FavoriteActivity;
 import com.wallet.darius.ui.history.HistoryActivity;
@@ -92,6 +96,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
         Bundle extras = getIntent().getExtras();
         myWallet = extras.getParcelable("wallet");
+        Log.i("xx", myWallet.getWalletName());
 
         setUpPolicy();
         setUpButton();
@@ -144,7 +149,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         });
 
         depositBtn.setOnClickListener(view -> {
-            Intent intent = new Intent(DashboardActivity.this, DepositActivity.class);
+            Intent intent = checkVerify(DepositActivity.class, "dp");
             intent.putExtra("balance", myWallet.retrieveBalance().toPlainString());
             intent.putExtra("address", myWallet.getCredential().getAddress());
             intent.putExtra("network", selectedNetwork);
@@ -153,7 +158,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         });
 
         transferBtn.setOnClickListener(view -> {
-            Intent intent = new Intent(DashboardActivity.this, TransferActivity.class);
+            Intent intent = checkVerify(TransferActivity.class, "tf");
             intent.putExtra("wallet", myWallet);
             intent.putExtra("network", selectedNetwork);
             intent.putExtra("networkLink", networkLink);
@@ -173,9 +178,21 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         historyBtn.setOnClickListener(view -> {
             Intent intent = new Intent(DashboardActivity.this, HistoryActivity.class);
             intent.putExtra("myAddress", myWallet.getCredential().getAddress());
+            intent.putExtra("network", selectedNetwork.toLowerCase());
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });
+    }
+
+    private Intent checkVerify(Class<?> next, String nextPageCode) {
+        Intent intent;
+        if (dashboardPresenter.checkVerify()) {
+            intent = new Intent(DashboardActivity.this, next);
+        } else {
+            intent = new Intent(DashboardActivity.this, VerifyEmailBfTxnActivity.class);
+            intent.putExtra("nextPage",nextPageCode);
+        }
+        return intent;
     }
 
     private void setUpTracking() {
@@ -230,6 +247,9 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
             case R.id.nav_change_pass:
                 startActivity(new Intent(DashboardActivity.this, ResetPasswordActivity.class));
                 break;
+            case R.id.nav_change_email:
+                startActivity(new Intent(DashboardActivity.this, ChangeEmailActivity.class));
+                break;
             case R.id.nav_logout:
                 dashboardPresenter.userSignOut(getFilesDir() + "/" + myWallet.getWalletName());
                 startActivity(new Intent(DashboardActivity.this, LoginActivity.class));
@@ -238,6 +258,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
+
     }
 
     @Override
@@ -267,5 +288,10 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         if (myWallet.getWeb3() != null) {
             balance.setText("" + myWallet.retrieveBalance().setScale(4, BigDecimal.ROUND_UP) + " ETH");
         }
+
+        View header = navigationView.getHeaderView(0);
+        menuEmail = header.findViewById(R.id.menu_email);
+        menuEmail.setText(dashboardPresenter.getUserEmail());
+
     }
 }

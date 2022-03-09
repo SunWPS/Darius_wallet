@@ -90,7 +90,6 @@ public class WalletAPI implements Parcelable {
         try {
             this.walletName = WalletUtils.generateLightNewWalletFile(password, file);
             this.credential = WalletUtils.loadCredentials(password, file + "/" + walletName);
-            Log.i("xx", "passwor " + password + "  address " + credential.getAddress() );
             // load to storage
             putDataAndFile();
         } catch (Exception e) {
@@ -147,7 +146,7 @@ public class WalletAPI implements Parcelable {
         return new BigDecimal(0);
     }
 
-    public boolean makeTransaction(String toAddress, BigDecimal amount) {
+    public boolean makeTransaction(String toAddress, BigDecimal amount, String network) {
         try {
             long timestamp = System.currentTimeMillis();
             TransactionReceipt receipt = Transfer.sendFunds(web3, credential, toAddress, amount, Convert.Unit.ETHER).send();
@@ -158,7 +157,7 @@ public class WalletAPI implements Parcelable {
             DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("history");
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-            myRef.child(user.getUid() + "/" + UUID.randomUUID().toString().replace("-", ""))
+            myRef.child(user.getUid() + "/" + network.toLowerCase() + "/" + UUID.randomUUID().toString().replace("-", ""))
                     .setValue(historyCard);
 
             return true;

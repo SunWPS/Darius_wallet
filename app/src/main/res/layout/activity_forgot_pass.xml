@@ -4,21 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/screen_forgotpass"
+    android:background="@drawable/screen_normal_2"
     tools:context=".ui.password.ForgotPasswordActivity">
 
     <TextView
         android:id="@+id/forgotPassTextFp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="382dp"
+        android:layout_marginTop="15dp"
         android:fontFamily="@font/roboto_bold"
         android:text="Forgot Password ?"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
     <TextView
         android:id="@+id/infoTextFp"
@@ -55,7 +55,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
         android:layout_marginTop="48dp"
-        android:fontFamily="@font/roboto"
+        android:fontFamily="@font/roboto_medium"
         android:text="Email"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
@@ -87,5 +87,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fp_email_to_send" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="54dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/img_forget_pass" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

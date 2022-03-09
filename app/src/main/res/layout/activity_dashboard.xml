@@ -16,7 +16,6 @@
         android:layout_gravity="start"
         android:background="@color/white"
         android:backgroundTint="#282136"
-        android:visibility="gone"
         app:headerLayout="@layout/menu_header"
         app:itemTextColor="@color/white"
         app:menu="@menu/main_menu" />
@@ -159,7 +158,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:fontFamily="@font/roboto_bold"
-                android:text="0.000001"
                 android:textColor="#FFFFFF"
                 android:textSize="36sp"
                 app:layout_constraintEnd_toEndOf="parent"

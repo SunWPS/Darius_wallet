@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/screen_verifyeamil"
-    tools:context=".ui.signup.VerifyEmailActivity">
+    android:background="@drawable/screen_normal_2"
+    tools:context=".ui.verifyEmail.VerifyEmailActivity">
 
     <TextView
         android:id="@+id/vf_email_label"
@@ -27,7 +27,7 @@
         android:layout_marginBottom="129dp"
         android:background="@drawable/bg_orange"
         android:fontFamily="@font/roboto_bold"
-        android:text="Finish"
+        android:text="Next"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,7 +38,7 @@
         android:id="@+id/infoVf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="456dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/roboto_bold"
         android:text="@string/verify_your_email_address"
         android:textColor="#FFFFFF"
@@ -46,7 +46,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.586"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView12" />
 
     <TextView
         android:id="@+id/info2Vf"
@@ -61,5 +61,15 @@
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/infoVf" />
+
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="124dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/img_verify_email" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

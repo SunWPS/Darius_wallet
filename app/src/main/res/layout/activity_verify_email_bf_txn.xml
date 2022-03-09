@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/screen_normal"
+    tools:context=".ui.verifyEmail.VerifyEmailBfTxnActivity">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.438"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/img_vf_mail" />
+
+    <TextView
+        android:id="@+id/vf_bf_txn_info"
+        android:layout_width="378dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/roboto_bold"
+        android:gravity="center"
+        android:text="Please verify the email before transfer."
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <TextView
+        android:id="@+id/vfInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:fontFamily="@font/roboto_medium"
+        android:text="@string/please_verify_that_your_email_address_is"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vf_bf_txn_info" />
+
+    <TextView
+        android:id="@+id/vf_bf_txn_email_label"
+        android:layout_width="360dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="7dp"
+        android:fontFamily="@font/roboto_medium"
+        android:gravity="center"
+        android:text="adfasfasdfasdfasd"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vfInfo" />
+
+    <Button
+        android:id="@+id/vf_bf_txn_send_email_btn"
+        android:layout_width="142dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="27dp"
+        android:background="@drawable/bg_blue_pink"
+        android:fontFamily="@font/roboto_bold"
+        android:text="Send Email"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vf_bf_txn_email_label" />
+
+    <TextView
+        android:id="@+id/vf_bf_txn_recheck"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginTop="28dp"
+        android:fontFamily="@font/roboto_medium"
+        android:text="Recheck"
+        android:textColor="#05E7A3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vf_bf_txn_send_email_btn" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.wallet.darius.ui.signup;
+package com.wallet.darius.ui.verifyEmail;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,7 +9,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.internal.InternalTokenProvider;
 import com.wallet.darius.API.WalletAPI;
+import com.wallet.darius.ui.pin.CreatePinActivity;
 import com.wallet.darius.ui.universalView.BasicView;
 import com.wallet.darius.R;
 import com.wallet.darius.ui.dashboard.DashboardActivity;
@@ -42,12 +44,10 @@ public class VerifyEmailActivity extends AppCompatActivity implements BasicView 
         nextToUsername.setOnClickListener(view -> {
 
             Bundle extras = getIntent().getExtras();
-
             WalletAPI myWallet = verifyEmailPresenter.getWallet(extras.getString("password"), getFilesDir().toString());
 
-            Intent intent = new Intent(VerifyEmailActivity.this, DashboardActivity.class);
+            Intent intent = new Intent(VerifyEmailActivity.this, CreatePinActivity.class);
             intent.putExtra("wallet", myWallet);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             finish();
 
