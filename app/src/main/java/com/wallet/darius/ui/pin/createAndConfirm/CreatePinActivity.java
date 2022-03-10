@@ -1,4 +1,4 @@
-package com.wallet.darius.ui.pin;
+package com.wallet.darius.ui.pin.createAndConfirm;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.chaos.view.PinView;
 import com.wallet.darius.R;
@@ -16,6 +17,7 @@ import com.wallet.darius.R;
 public class CreatePinActivity extends AppCompatActivity {
     private PinView createPin;
     private Button nextBtn;
+    private TextView pinTopic;
 
     private Bundle bundle;
 
@@ -26,10 +28,17 @@ public class CreatePinActivity extends AppCompatActivity {
 
         createPin = findViewById(R.id.create_pin);
         nextBtn = findViewById(R.id.create_pin_next_btn);
+        pinTopic = findViewById(R.id.pin_topic);
 
         nextBtn.setEnabled(false);
 
         bundle = getIntent().getExtras();
+
+        if (bundle.getInt("check") == 1) {
+            pinTopic.setText("Create Pin");
+        } else {
+            pinTopic.setText("Update Pin");
+        }
 
         setUpPin();
 
@@ -54,6 +63,9 @@ public class CreatePinActivity extends AppCompatActivity {
                         bundle.putString("pin", charSequence.toString());
                         intent.putExtras(bundle);
                         startActivity(intent);
+                        if (bundle.getInt("check") == 2) {
+                            finish();
+                        }
                     });
                     nextBtn.setEnabled(true);
                 }

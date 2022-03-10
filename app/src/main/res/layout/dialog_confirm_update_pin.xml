@@ -28,12 +28,12 @@
                 app:srcCompat="@drawable/bg_header" />
 
             <TextView
-                android:id="@+id/textView31"
+                android:id="@+id/textView30"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
                 android:fontFamily="@font/roboto_bold"
-                android:text="Transfer Failed"
+                android:text="Update Successful"
                 android:textColor="#180A30"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -41,12 +41,12 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
-                android:id="@+id/okFailedBtn"
-                android:layout_width="139dp"
-                android:layout_height="48dp"
+                android:id="@+id/cf_pin_back_to_dashboard_btn"
+                android:layout_width="174dp"
+                android:layout_height="59dp"
                 android:layout_marginBottom="16dp"
-                android:background="@drawable/bg_red_purple"
-                android:text="OK"
+                android:background="@drawable/bg_green_blue"
+                android:text="Back To Dashboard"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -62,7 +62,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView6"
                 app:lottie_autoPlay="true"
-                app:lottie_rawRes="@raw/fail" />
+                app:lottie_rawRes="@raw/successful" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

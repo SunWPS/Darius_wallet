@@ -16,17 +16,17 @@
             android:layout_height="match_parent"
             android:background="@drawable/bg_corner">
 
-            <ProgressBar
-                android:id="@+id/progressBar"
-                style="?android:attr/progressBarStyle"
-                android:layout_width="138dp"
-                android:layout_height="118dp"
-                android:layout_marginTop="76dp"
-                android:indeterminateDrawable="@drawable/circular_progress_bar"
-                android:indeterminateDuration="@android:integer/config_longAnimTime"
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:layout_width="325dp"
+                android:layout_height="276dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.526"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+                app:layout_constraintTop_toBottomOf="@+id/imageView6"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/transfer_money" />
 
             <ImageView
                 android:id="@+id/imageView6"

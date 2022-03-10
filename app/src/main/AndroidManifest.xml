@@ -14,15 +14,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Darius">
         <activity
-            android:name=".ui.pin.LoginPinActivity"
+            android:name=".ui.pin.loginPin.LoginPinActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize"/>
         <activity
-            android:name=".ui.pin.ConfirmPinActivity"
+            android:name=".ui.pin.createAndConfirm.ConfirmPinActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".ui.pin.CreatePinActivity"
+            android:name=".ui.pin.createAndConfirm.CreatePinActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity

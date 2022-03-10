@@ -2,7 +2,10 @@ package com.wallet.darius.ui.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
@@ -27,6 +30,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     private LoginPresenter loginPresenter;
     private DownloadWalletFunction downloadWalletFunction;
+    private Dialog dialog;
 
 
     @Override
@@ -41,6 +45,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         singUp = findViewById(R.id.log_signup);
         forgotPass = findViewById(R.id.log_fg_pass);
         loginBtn = findViewById(R.id.log_login_btn);
+
+        dialog = new Dialog(this);
 
         downloadWalletFunction = new DownloadWalletFunction(this,
                 getFilesDir().toString());
@@ -81,7 +87,17 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         }
 
         // login
-        loginPresenter.login(email, password);
+
+        dialog.setCancelable(false);
+        dialog.setContentView(R.layout.dialog_loading);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.show();
+
+        Thread backgroundThread = new Thread(() -> {
+            loginPresenter.login(email, password);
+        });
+        backgroundThread.start();
+
     }
 
     public void clearError() {
@@ -91,11 +107,13 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @Override
     public void onFail(String message) {
+        dialog.dismiss();
         Toast.makeText(LoginActivity.this, message, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void goToNextPage(WalletAPI wallet) {
+        dialog.dismiss();
         Log.i("xx", "LoginActivity " + wallet.getCredential().getAddress());
         Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
         intent.putExtra("wallet", wallet);

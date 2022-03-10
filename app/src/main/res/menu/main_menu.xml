@@ -11,6 +11,10 @@
             android:title="Change Email"
             android:icon="@drawable/ic_email"/>
         <item
+            android:id="@+id/nav_update_pin"
+            android:title="Update Pin"
+            android:icon="@drawable/ic_pin"/>
+        <item
             android:id="@+id/nav_logout"
             android:title="Logout"
             android:icon="@drawable/ic_logout"/>

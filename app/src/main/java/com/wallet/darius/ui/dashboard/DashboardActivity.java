@@ -7,16 +7,17 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.content.Context;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -30,6 +31,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.wallet.darius.API.WalletAPI;
 import com.wallet.darius.R;
 import com.wallet.darius.ui.changeEmail.ChangeEmailActivity;
+import com.wallet.darius.ui.pin.createAndConfirm.CreatePinActivity;
 import com.wallet.darius.ui.verifyEmail.VerifyEmailBfTxnActivity;
 import com.wallet.darius.ui.depositAndTransfer.DepositActivity;
 import com.wallet.darius.ui.favorite.FavoriteActivity;
@@ -41,8 +43,6 @@ import com.wallet.darius.ui.depositAndTransfer.TransferActivity;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-
-import jnr.ffi.annotations.In;
 
 public class DashboardActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DashboardView{
 
@@ -96,11 +96,11 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
         Bundle extras = getIntent().getExtras();
         myWallet = extras.getParcelable("wallet");
-        Log.i("xx", myWallet.getWalletName());
 
         setUpPolicy();
         setUpButton();
         menuSetUp();
+
         setUpNetworkSpinner();
 
         dashboardPresenter.getEthTracking();
@@ -250,6 +250,11 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
             case R.id.nav_change_email:
                 startActivity(new Intent(DashboardActivity.this, ChangeEmailActivity.class));
                 break;
+            case R.id.nav_update_pin:
+                Intent intent = new Intent(DashboardActivity.this, CreatePinActivity.class);
+                intent.putExtra("check", 2);
+                startActivity(intent);
+                break;
             case R.id.nav_logout:
                 dashboardPresenter.userSignOut(getFilesDir() + "/" + myWallet.getWalletName());
                 startActivity(new Intent(DashboardActivity.this, LoginActivity.class));
@@ -284,6 +289,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     public void onResume(){
         super.onResume();
         Log.i("xx", "start");
+
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         if (myWallet.getWeb3() != null) {
             balance.setText("" + myWallet.retrieveBalance().setScale(4, BigDecimal.ROUND_UP) + " ETH");

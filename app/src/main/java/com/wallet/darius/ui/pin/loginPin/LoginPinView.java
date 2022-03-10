@@ -1,4 +1,4 @@
-package com.wallet.darius.ui.pin;
+package com.wallet.darius.ui.pin.loginPin;
 
 public interface LoginPinView {
     void isCorrect();

@@ -1,4 +1,4 @@
-package com.wallet.darius.ui.pin;
+package com.wallet.darius.ui.pin.loginPin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,7 +12,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
 import com.chaos.view.PinView;
-import com.google.firebase.database.DatabaseReference;
 import com.wallet.darius.R;
 import com.wallet.darius.ui.dashboard.DashboardActivity;
 

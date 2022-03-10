@@ -1,4 +1,4 @@
-package com.wallet.darius.ui.pin;
+package com.wallet.darius.ui.pin.loginPin;
 
 import androidx.annotation.NonNull;
 

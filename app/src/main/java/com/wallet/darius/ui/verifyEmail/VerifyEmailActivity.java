@@ -9,12 +9,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.internal.InternalTokenProvider;
 import com.wallet.darius.API.WalletAPI;
-import com.wallet.darius.ui.pin.CreatePinActivity;
+import com.wallet.darius.ui.pin.createAndConfirm.CreatePinActivity;
 import com.wallet.darius.ui.universalView.BasicView;
 import com.wallet.darius.R;
-import com.wallet.darius.ui.dashboard.DashboardActivity;
 
 public class VerifyEmailActivity extends AppCompatActivity implements BasicView {
 
@@ -48,6 +46,7 @@ public class VerifyEmailActivity extends AppCompatActivity implements BasicView 
 
             Intent intent = new Intent(VerifyEmailActivity.this, CreatePinActivity.class);
             intent.putExtra("wallet", myWallet);
+            intent.putExtra("check", 1);
             startActivity(intent);
             finish();
 

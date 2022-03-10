@@ -1,4 +1,4 @@
-package com.wallet.darius.ui.pin;
+package com.wallet.darius.ui.pin.createAndConfirm;
 
 import com.google.common.hash.Hashing;
 import com.google.firebase.auth.FirebaseAuth;
@@ -8,6 +8,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.wallet.darius.model.user.UserPin;
 
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ConfirmPinPresenter {
 
@@ -20,12 +22,19 @@ public class ConfirmPinPresenter {
     }
 
     public void putPinToDataBase(String pin) {
-        String encryptPin = Hashing.sha256()
-                .hashString(pin, StandardCharsets.UTF_8).toString();
-
-        UserPin userPin = new UserPin(encryptPin);
-
+        UserPin userPin = new UserPin(encryptPin(pin));
         myRef.child(user.getUid()).setValue(userPin);
+    }
+
+    public void updatePin(String pin) {
+        Map<String, Object> update = new HashMap<>();
+        update.put("pin", encryptPin(pin));
+        myRef.child(user.getUid()).updateChildren(update);
+    }
+
+    private String encryptPin(String pin) {
+        return Hashing.sha256()
+                .hashString(pin, StandardCharsets.UTF_8).toString();
     }
 
 }

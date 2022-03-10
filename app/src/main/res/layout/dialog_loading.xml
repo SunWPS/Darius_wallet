@@ -16,6 +16,18 @@
             android:layout_height="match_parent"
             android:background="@drawable/bg_corner">
 
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:layout_width="266dp"
+                android:layout_height="230dp"
+                android:layout_marginTop="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView6"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/loading" />
+
             <ImageView
                 android:id="@+id/imageView6"
                 android:layout_width="344dp"
@@ -28,41 +40,18 @@
                 app:srcCompat="@drawable/bg_header" />
 
             <TextView
-                android:id="@+id/textView31"
+                android:id="@+id/textView32"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
                 android:fontFamily="@font/roboto_bold"
-                android:text="Transfer Failed"
+                android:text="Loding ..."
                 android:textColor="#180A30"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <Button
-                android:id="@+id/okFailedBtn"
-                android:layout_width="139dp"
-                android:layout_height="48dp"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/bg_red_purple"
-                android:text="OK"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.502"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <com.airbnb.lottie.LottieAnimationView
-                android:layout_width="235dp"
-                android:layout_height="176dp"
-                android:layout_marginTop="16dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView6"
-                app:lottie_autoPlay="true"
-                app:lottie_rawRes="@raw/fail" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
