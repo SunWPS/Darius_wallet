@@ -11,7 +11,7 @@
         android:id="@+id/confirm_pin"
         android:layout_width="wrap_content"
         android:layout_height="80dp"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="76dp"
         android:elevation="10dp"
         android:focusable="true"
         android:focusableInTouchMode="true"
@@ -32,12 +32,13 @@
         android:id="@+id/pin_topic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="123dp"
+        android:layout_marginTop="36dp"
         android:fontFamily="@font/roboto_bold"
         android:text="Confirm Pin"
         android:textColor="#FFFFFF"
         android:textSize="45sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -45,13 +46,173 @@
         android:id="@+id/pin_error"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="36dp"
         android:fontFamily="@font/roboto_bold"
         android:gravity="center"
         android:textColor="@color/red"
-        android:textSize="24sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pin_topic" />
+
+    <TextView
+        android:id="@+id/two_btn"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="67dp"
+        android:layout_marginEnd="25dp"
+        android:fontFamily="@font/roboto_bold"
+        android:gravity="center"
+        android:text="2"
+        android:textColor="#F97428"
+        android:textSize="48sp"
+        app:layout_constraintEnd_toStartOf="@+id/three_btn"
+        app:layout_constraintStart_toEndOf="@+id/one_btn"
+        app:layout_constraintTop_toBottomOf="@+id/confirm_pin" />
+
+    <TextView
+        android:id="@+id/zero_btn"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="25dp"
+        android:fontFamily="@font/roboto_bold"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="#F97428"
+        android:textSize="48sp"
+        app:layout_constraintEnd_toStartOf="@+id/del_btn"
+        app:layout_constraintTop_toBottomOf="@+id/eight_btn" />
+
+    <TextView
+        android:id="@+id/del_btn"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="41dp"
+        android:fontFamily="@font/roboto_bold"
+        android:gravity="center"
+        android:text="del"
+        android:textColor="#F97428"
+        android:textSize="48sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nine_btn" />
+
+    <TextView
+        android:id="@+id/nine_btn"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="41dp"
+        android:fontFamily="@font/roboto_bold"
+        android:gravity="center"
+        android:text="9"
+        android:textColor="#F97428"
+        android:textSize="48sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/six_btn" />
+
+    <TextView
+        android:id="@+id/seven_btn"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/roboto_bold"
+        android:gravity="center"
+        android:text="7"
+        android:textColor="#F97428"
+        android:textSize="48sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/four_btn" />
+
+    <TextView
+        android:id="@+id/four_btn"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="26dp"
+        android:fontFamily="@font/roboto_bold"
+        android:gravity="center"
+        android:text="4"
+        android:textColor="#F97428"
+        android:textSize="48sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/one_btn" />
+
+    <TextView
+        android:id="@+id/six_btn"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="41dp"
+        android:fontFamily="@font/roboto_bold"
+        android:gravity="center"
+        android:text="6"
+        android:textColor="#F97428"
+        android:textSize="48sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/three_btn" />
+
+    <TextView
+        android:id="@+id/one_btn"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="67dp"
+        android:fontFamily="@font/roboto_bold"
+        android:gravity="center"
+        android:text="1"
+        android:textColor="#F97428"
+        android:textSize="48sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/confirm_pin" />
+
+    <TextView
+        android:id="@+id/three_btn"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="67dp"
+        android:layout_marginEnd="41dp"
+        android:fontFamily="@font/roboto_bold"
+        android:gravity="center"
+        android:text="3"
+        android:textColor="#F97428"
+        android:textSize="48sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/confirm_pin" />
+
+    <TextView
+        android:id="@+id/five_btn"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="25dp"
+        android:fontFamily="@font/roboto_bold"
+        android:gravity="center"
+        android:text="5"
+        android:textColor="#F97428"
+        android:textSize="48sp"
+        app:layout_constraintEnd_toStartOf="@+id/six_btn"
+        app:layout_constraintStart_toEndOf="@+id/four_btn"
+        app:layout_constraintTop_toBottomOf="@+id/two_btn" />
+
+    <TextView
+        android:id="@+id/eight_btn"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="25dp"
+        android:fontFamily="@font/roboto_bold"
+        android:gravity="center"
+        android:text="8"
+        android:textColor="#F97428"
+        android:textSize="48sp"
+        app:layout_constraintEnd_toStartOf="@+id/nine_btn"
+        app:layout_constraintStart_toEndOf="@+id/seven_btn"
+        app:layout_constraintTop_toBottomOf="@+id/five_btn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,16 +15,13 @@
         android:theme="@style/Theme.Darius">
         <activity
             android:name=".ui.pin.loginPin.LoginPinActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize"/>
+            android:exported="false" />
         <activity
             android:name=".ui.pin.createAndConfirm.ConfirmPinActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
+            android:exported="false" />
         <activity
             android:name=".ui.pin.createAndConfirm.CreatePinActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
+            android:exported="false" />
         <activity
             android:name=".ui.changeEmail.ChangeEmailActivity"
             android:exported="false" />
