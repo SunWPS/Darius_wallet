@@ -84,9 +84,10 @@ public class DownloadWalletFunction {
     }
 
     public void walletSetup() {
-        if (!password.isEmpty() && !walletName.isEmpty())
-        wallet.setPassword(password);
-        wallet.loadWallet(walletName);
+        if (!password.isEmpty() && !walletName.isEmpty()) {
+            wallet.setPassword(password);
+            wallet.loadWallet(walletName);
+        }
     }
 
 }

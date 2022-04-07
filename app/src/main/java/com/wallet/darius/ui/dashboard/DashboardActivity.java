@@ -7,12 +7,9 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
@@ -110,10 +107,10 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
     private void setUpNetworkSpinner() {
         List<String> netWorkList = new ArrayList<>();
-        netWorkList.add("Rinkeby");
-        netWorkList.add("Mainnet");
-        netWorkList.add("Kovan");
-        netWorkList.add("Gorli");
+        netWorkList.add(getString(R.string.network1));
+        netWorkList.add(getString(R.string.network2));
+        netWorkList.add(getString(R.string.network3));
+        netWorkList.add(getString(R.string.network4));
 
         ArrayAdapter adapter = new ArrayAdapter(this, R.layout.dropdown_selected, netWorkList);
         adapter.setDropDownViewResource(R.layout.dropdown_items);
@@ -198,7 +195,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     private void setUpTracking() {
         refreshTracking.setOnClickListener(view -> {
             dashboardPresenter.getEthTracking();
-            Log.i("xx", "click");
+//            Log.i("xx", "click");
         });
     }
 

@@ -1,6 +1,5 @@
 package com.wallet.darius.API;
 
-import android.content.pm.ApplicationInfo;
 import android.util.Log;
 
 import com.google.gson.Gson;
@@ -43,7 +42,6 @@ public class CoinInfoAPI {
                 .addHeader("X-CMC_PRO_API_KEY", apiKey)
                 .build();
 
-
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -57,12 +55,10 @@ public class CoinInfoAPI {
                 Gson gson = new Gson();
                 Root coin = gson.fromJson(responseBody, Root.class);
 
-
                 dashboardPresenter.extractEthInfo(coin.getData().get(0).getQuote().getUSD());
             }
         });
 
     }
-
 
 }

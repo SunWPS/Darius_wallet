@@ -14,4 +14,10 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="network1">Rinkeby</string>
+    <string name="network2">Mainnet</string>
+    <string name="network3">Kovan</string>
+    <string name="network4">Gorli</string>
+    <string name="changeEmail1">New Email is Missing</string>
+    <string name="changeEmail2">New Email is not Validated</string>
 </resources>

@@ -14,7 +14,6 @@ import com.wallet.darius.API.WalletAPI;
 import com.wallet.darius.R;
 
 import java.math.BigDecimal;
-import java.util.Locale;
 
 public class TransferActivity extends AppCompatActivity {
 

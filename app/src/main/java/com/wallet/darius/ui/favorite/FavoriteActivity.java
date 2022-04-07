@@ -102,7 +102,6 @@ public class FavoriteActivity extends AppCompatActivity {
             }
 
             putDataToDB(name, address);
-            // TODO: do some thing to confirm
             dialog.dismiss();
         });
 

@@ -1,10 +1,7 @@
 package com.wallet.darius.model.itemCard;
 
-import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-
-import javax.xml.transform.Templates;
 
 public class HistoryCard {
     private String receiverAddress;

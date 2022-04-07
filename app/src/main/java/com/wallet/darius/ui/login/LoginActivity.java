@@ -87,7 +87,6 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         }
 
         // login
-
         dialog.setCancelable(false);
         dialog.setContentView(R.layout.dialog_loading);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));

@@ -19,8 +19,6 @@ import com.wallet.darius.ui.verifyEmail.VerifyEmailBfTxnActivity;
 
 import java.util.ArrayList;
 
-import jnr.ffi.annotations.In;
-
 public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.FavoriteHolder> {
 
     private Context context;

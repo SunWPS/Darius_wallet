@@ -2,13 +2,11 @@ package com.wallet.darius.ui.pin.loginPin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
 import com.chaos.view.PinView;
@@ -109,7 +107,7 @@ public class LoginPinActivity extends AppCompatActivity implements LoginPinView{
 
     @Override
     public void isCorrect() {
-        Log.i("xx", "correct");
+//        Log.i("xx", "correct");
         Intent intent = new Intent(LoginPinActivity.this, DashboardActivity.class);
         intent.putExtras(extras);
         startActivity(intent);

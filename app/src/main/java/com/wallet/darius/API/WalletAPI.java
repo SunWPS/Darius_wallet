@@ -246,7 +246,6 @@ public class WalletAPI implements Parcelable {
         parcel.writeString(filePath);
         parcel.writeString(password);
         parcel.writeString(walletName);
-//        parcel.writeString(uri);
     }
 
     public Web3j getWeb3() {

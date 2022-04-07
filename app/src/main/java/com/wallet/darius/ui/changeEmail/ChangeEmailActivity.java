@@ -10,7 +10,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wallet.darius.R;
-import com.wallet.darius.ui.password.ForgotPasswordActivity;
 import com.wallet.darius.ui.universalView.BasicView;
 
 public class ChangeEmailActivity extends AppCompatActivity implements BasicView {
@@ -46,11 +45,11 @@ public class ChangeEmailActivity extends AppCompatActivity implements BasicView 
             String email = newEmail.getText().toString();
 
             if (email.isEmpty()) {
-                errorNewEmail.setText("New Email is Missing");
+                errorNewEmail.setText(R.string.changeEmail1);
                 return;
             }
             if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                errorNewEmail.setText("New Email is not Validated");
+                errorNewEmail.setText(R.string.changeEmail2);
                 return;
             }
 
