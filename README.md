@@ -1,5 +1,5 @@
 # Darius (ETH Wallet)
-This is a project for Mobile Application Design and Development (CS344-60) class.
+This is my final project for the Mobile Application Design and Development (CS344-60) class.
 
 ## Libraries
 - web3j (for connect with smart contact)
