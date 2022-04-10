@@ -2,14 +2,14 @@
 This is my final project for the Mobile Application Design and Development (CS344-60) class.
 
 ## Libraries
-- web3j (for connect with smart contact)
+- web3j
 - firebase (**Authentication**, database, storage)
 - **androidx.legacy:legacy-support-v4**
 - GSON
-- okhttp3 (for connect with API)
+- okhttp3
 - guava
 - io.github.chaosleung:pinview
-- Lottie (show json animation)
+- Lottie
 
 ## APIs
 - Infura API
